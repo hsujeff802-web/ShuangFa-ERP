@@ -61,10 +61,10 @@ dialog{border:0;border-radius:16px;padding:0;max-width:680px;width:calc(100% - 2
 
 </head>
 <body>
-<header><div class="head"><div><h1>🔧 雙發水電五金｜ERP 6.0 專業版</h1><div class="sub">網站正式版｜商品・進貨・銷貨・庫存・客戶・估價單｜iPhone 與 Windows 共用網址</div></div><div style="display:flex;gap:8px;align-items:center"><span id="netStatus" class="badge" style="background:#e7f5ec;color:#1b7f45">連線中</span><button class="secondary hide-mobile" onclick="showPanel('backup')">備份資料</button></div></div></header>
+<header><div class="head"><div><h1>🔧 雙發水電五金｜ERP 6.0 專業版</h1><div class="sub">正式網站版｜商品搜尋・進銷存・庫存・客戶・估價單・完整備份</div></div><div style="display:flex;gap:8px;align-items:center"><span id="netStatus" class="badge" style="background:#e7f5ec;color:#1b7f45">連線中</span><button class="secondary hide-mobile" onclick="showPanel('backup')">備份資料</button></div></div></header>
 <main>
 <nav class="nav no-print">
-<button class="active" data-panel="dashboard">首頁</button><button data-panel="products">商品</button><button data-panel="stockin">廠商進貨</button><button data-panel="sales">客戶銷貨</button><button data-panel="quotes">估價單</button><button data-panel="returns">廠商退貨</button><button data-panel="customerReturn">客戶退貨</button><button data-panel="supplierInRecords">廠商進貨紀錄</button><button data-panel="supplierReturnRecords">廠商退貨紀錄</button><button data-panel="customerSaleRecords">客戶銷貨紀錄</button><button data-panel="customerReturnRecords">客戶退貨紀錄</button><button data-panel="inventory">庫存</button><button data-panel="customers">客戶資料</button><button data-panel="suppliers">廠商資料</button><button data-panel="backup">設定</button>
+<button class="active" data-panel="dashboard">首頁</button><button data-panel="products">商品</button><button data-panel="stockin">廠商進貨</button><button data-panel="sales">客戶銷貨</button><button data-panel="returns">廠商退貨</button><button data-panel="customerReturn">客戶退貨</button><button data-panel="supplierInRecords">廠商進貨紀錄</button><button data-panel="supplierReturnRecords">廠商退貨紀錄</button><button data-panel="customerSaleRecords">客戶銷貨紀錄</button><button data-panel="customerReturnRecords">客戶退貨紀錄</button><button data-panel="inventory">庫存</button><button data-panel="customers">客戶資料</button><button data-panel="suppliers">廠商資料</button><button data-panel="quotes">估價單</button><button data-panel="backup">設定</button>
 </nav>
 
 <section id="dashboard" class="panel">
@@ -414,6 +414,37 @@ dialog{border:0;border-radius:16px;padding:0;max-width:680px;width:calc(100% - 2
 <section id="customerSaleRecords" class="panel hidden"><div class="card"><h2>客戶銷貨紀錄</h2><div id="customerSaleRecordTable"></div></div></section>
 <section id="customerReturnRecords" class="panel hidden"><div class="card"><h2>客戶退貨紀錄</h2><div id="customerReturnRecordTable"></div></div></section>
 
+
+<section id="quotes" class="panel hidden">
+  <div class="card">
+    <div class="head"><div><h2>估價單</h2><p class="muted">搜尋型號加入商品，自動計算未稅、稅金與總計。</p></div><div class="no-print"><button class="secondary" onclick="newQuote()">新增估價單</button><button onclick="saveQuote()">儲存</button><button class="secondary" onclick="window.print()">列印／PDF</button></div></div>
+    <div class="formrow">
+      <label>估價日期<input id="quoteDate" type="date"></label>
+      <label>估價單號<input id="quoteNo" placeholder="自動產生"></label>
+      <label>客戶名稱<input id="quoteCustomer" placeholder="請輸入客戶名稱"></label>
+      <label>電話<input id="quotePhone" inputmode="tel"></label>
+    </div>
+    <label>地址<input id="quoteAddress" placeholder="施工或送貨地址"></label>
+    <hr>
+    <div class="formrow no-print">
+      <label>搜尋商品<input id="quoteSearch" list="quoteProductList" placeholder="輸入型號、品牌或品名"></label>
+      <label>價格類型<select id="quotePriceType"><option value="end">末端售價</option><option value="wholesale">批發價</option><option value="suggested">建議售價</option><option value="dealer">經銷價</option></select></label>
+      <div style="align-self:end"><button onclick="addQuoteItem()">加入商品</button></div>
+    </div>
+    <datalist id="quoteProductList"></datalist>
+    <div class="tablewrap"><table><thead><tr><th>型號／品名</th><th>數量</th><th>單價</th><th>金額</th><th class="no-print">操作</th></tr></thead><tbody id="quoteItemsBody"></tbody></table></div>
+    <div class="grid2" style="margin-top:14px">
+      <label>備註<textarea id="quoteNote" rows="5" placeholder="施工、運送、保固、付款條件等"></textarea></label>
+      <div class="card" style="box-shadow:none;border:1px solid #dce4ee">
+        <div class="row between"><b>未稅小計</b><b id="quoteSubtotal">$0</b></div>
+        <div class="row between"><label style="display:flex;align-items:center;gap:8px"><input id="quoteTaxEnabled" type="checkbox" checked onchange="renderQuote()">稅金 5%</label><b id="quoteTax">$0</b></div>
+        <hr><div class="row between"><h2>總計</h2><h2 id="quoteTotal">$0</h2></div>
+      </div>
+    </div>
+  </div>
+  <div class="card no-print"><h2>已儲存估價單</h2><div id="quoteHistory"></div></div>
+</section>
+
 <section id="backup" class="panel hidden">
 <div class="card"><h2>📱 安裝到手機主畫面</h2>
 <p class="notice">Android 使用 Chrome 開啟本系統後，可按「安裝雙發 ERP」。iPhone／iPad 請使用 Safari，按分享按鈕，再選「加入主畫面」。</p>
@@ -444,26 +475,6 @@ dialog{border:0;border-radius:16px;padding:0;max-width:680px;width:calc(100% - 2
 
 <dialog id="productDialog"><div class="dialogbody" id="productDetail"></div></dialog>
 <div id="toast" class="toast"></div>
-
-
-<section id="quotes" class="panel hidden">
-<div class="card">
-<h2>🧾 估價單｜ERP 6.0 新功能</h2>
-<div class="formrow"><div><label>估價單號</label><input id="quoteNo"></div><div><label>日期</label><input id="quoteDate" type="date"></div></div>
-<div class="formrow"><div><label>客戶名稱</label><input id="quoteCustomer" placeholder="輸入客戶或公司名稱"></div><div><label>電話</label><input id="quotePhone" placeholder="客戶電話"></div></div>
-<label>地址</label><input id="quoteAddress" placeholder="施工／送貨地址">
-<div class="formrow"><div><label>搜尋商品型號</label><input id="quoteSearch" placeholder="例如 DH-1638H、G-2965GM" oninput="quoteFindProducts()"></div><div><label>數量</label><input id="quoteQty" type="number" value="1" min="1"></div></div>
-<div id="quoteResults" class="list"></div>
-</div>
-<div class="card">
-<h3>估價明細</h3>
-<div class="scroll"><table><thead><tr><th>型號／品名</th><th>數量</th><th>單價</th><th>小計</th><th></th></tr></thead><tbody id="quoteItems"></tbody></table></div>
-<div class="price-summary"><div class="price-summary-grid"><div><small>未稅小計</small><b id="quoteSubtotal">$0</b></div><div><small>稅率</small><input id="quoteTaxRate" type="number" value="5" min="0" step="0.1" oninput="renderQuote()"></div><div><small>稅金</small><b id="quoteTax">$0</b></div><div><small>含稅總計</small><b id="quoteTotal">$0</b></div></div></div>
-<label>備註</label><textarea id="quoteNote" rows="3" placeholder="例如：本估價有效 7 天，施工條件另議。"></textarea>
-<div class="actions"><button class="primary" onclick="printQuote()">列印／存成 PDF</button><button class="success" onclick="saveQuote()">儲存估價單</button><button class="secondary" onclick="newQuote()">新增一張</button></div>
-</div>
-<div class="card"><h3>已儲存估價單</h3><div id="savedQuoteList" class="list"></div></div>
-</section>
 
 <script>
 // iPhone「檔案」App 以 file:// 開啟時，Safari 可能封鎖 localStorage。
@@ -550,10 +561,41 @@ function roundWholesale(v){
  if(m==="nearest50")return Math.round(v/50)*50;
  return Math.round(v*100)/100;
 }
+
+let currentQuote={id:null,items:[]};
+function quoteProductOptions(){
+ const list=document.getElementById("quoteProductList"); if(!list)return;
+ list.innerHTML=state.products.map((p,i)=>`<option value="${p.id}｜${p.brand}｜${p.description||p.category}" data-index="${i}"></option>`).join("");
+}
+function quoteUnitPrice(p,type){const c=calc(p);if(type==="wholesale")return c.wholesale;if(type==="suggested")return p.suggested||0;if(type==="dealer")return p.dealer||0;return c.end;}
+function newQuote(){currentQuote={id:null,items:[]};quoteDate.value=today();quoteNo.value="Q"+today().replaceAll("-","")+"-"+String(Date.now()).slice(-4);quoteCustomer.value="";quotePhone.value="";quoteAddress.value="";quoteNote.value="";quoteTaxEnabled.checked=true;renderQuote();}
+function addQuoteItem(){
+ const q=norm(quoteSearch.value.split("｜")[0]); if(!q)return toast("請先輸入商品型號");
+ const p=state.products.find(x=>norm(x.id)===q)||state.products.find(x=>norm(x.id).includes(q)||norm(x.description).includes(q));
+ if(!p)return toast("找不到商品");
+ const existing=currentQuote.items.find(x=>x.productKey===p.channel+"|"+p.id);
+ if(existing)existing.qty+=1; else currentQuote.items.push({productKey:p.channel+"|"+p.id,id:p.id,name:p.description||p.category,qty:1,price:quoteUnitPrice(p,quotePriceType.value)});
+ quoteSearch.value="";renderQuote();
+}
+function renderQuote(){
+ const body=document.getElementById("quoteItemsBody");if(!body)return;
+ body.innerHTML=currentQuote.items.length?currentQuote.items.map((x,i)=>`<tr><td><b>${x.id}</b><br><span class="muted">${x.name||""}</span></td><td><input style="width:80px" type="number" min="1" value="${x.qty}" onchange="currentQuote.items[${i}].qty=Math.max(1,Number(this.value)||1);renderQuote()"></td><td><input style="width:120px" type="number" min="0" value="${Math.round(x.price)}" onchange="currentQuote.items[${i}].price=Math.max(0,Number(this.value)||0);renderQuote()"></td><td>$${money(x.qty*x.price,0)}</td><td class="no-print"><button class="danger" onclick="currentQuote.items.splice(${i},1);renderQuote()">刪除</button></td></tr>`).join(""):'<tr><td colspan="5" class="muted">尚未加入商品</td></tr>';
+ const subtotal=currentQuote.items.reduce((a,x)=>a+x.qty*x.price,0);const tax=quoteTaxEnabled.checked?Math.round(subtotal*.05):0;
+ quoteSubtotal.textContent="$"+money(subtotal,0);quoteTax.textContent="$"+money(tax,0);quoteTotal.textContent="$"+money(subtotal+tax,0);renderQuoteHistory();
+}
+function saveQuote(){
+ if(!currentQuote.items.length)return toast("估價單尚未加入商品");
+ state.quotes=state.quotes||[];const data={id:currentQuote.id||Date.now(),date:quoteDate.value,no:quoteNo.value||("Q"+Date.now()),customer:quoteCustomer.value,phone:quotePhone.value,address:quoteAddress.value,note:quoteNote.value,tax:quoteTaxEnabled.checked,items:JSON.parse(JSON.stringify(currentQuote.items))};
+ const idx=state.quotes.findIndex(x=>x.id===data.id);if(idx>=0)state.quotes[idx]=data;else state.quotes.unshift(data);currentQuote.id=data.id;persist("儲存估價單",true);renderQuoteHistory();toast("估價單已儲存");
+}
+function openQuote(id){const q=(state.quotes||[]).find(x=>x.id===id);if(!q)return;currentQuote={id:q.id,items:JSON.parse(JSON.stringify(q.items||[]))};quoteDate.value=q.date||today();quoteNo.value=q.no||"";quoteCustomer.value=q.customer||"";quotePhone.value=q.phone||"";quoteAddress.value=q.address||"";quoteNote.value=q.note||"";quoteTaxEnabled.checked=q.tax!==false;renderQuote();window.scrollTo({top:0,behavior:"smooth"});}
+function deleteQuote(id){if(!confirm("確定刪除這張估價單？"))return;state.quotes=(state.quotes||[]).filter(x=>x.id!==id);persist("刪除估價單",false);renderQuoteHistory();}
+function renderQuoteHistory(){const el=document.getElementById("quoteHistory");if(!el)return;const qs=state.quotes||[];el.innerHTML=qs.length?`<div class="tablewrap"><table><thead><tr><th>日期</th><th>單號</th><th>客戶</th><th>總額</th><th>操作</th></tr></thead><tbody>${qs.map(q=>{const sub=(q.items||[]).reduce((a,x)=>a+x.qty*x.price,0),total=sub+(q.tax===false?0:Math.round(sub*.05));return `<tr><td>${q.date||""}</td><td>${q.no||""}</td><td>${q.customer||"一般客戶"}</td><td>$${money(total,0)}</td><td><button onclick="openQuote(${q.id})">開啟</button> <button class="danger" onclick="deleteQuote(${q.id})">刪除</button></td></tr>`}).join("")}</tbody></table></div>`:'<p class="muted">尚無已儲存估價單</p>';}
+
 function showPanel(id){
  document.querySelectorAll(".panel").forEach(x=>x.classList.add("hidden"));const panel=document.getElementById(id);if(panel)panel.classList.remove("hidden");
  document.querySelectorAll(".nav button").forEach(x=>x.classList.toggle("active",x.dataset.panel===id));
- if(id==="dashboard")renderDashboard(); if(id==="products")renderProducts(); if(id==="quotes"){initQuote();renderSavedQuotes();} if(id==="returns")renderReturnRecords(); if(id==="inventory")renderInventory(); if(id==="customers")renderCustomers(); if(id==="suppliers")renderSuppliers();
+ if(id==="dashboard")renderDashboard(); if(id==="products")renderProducts(); if(id==="quotes"){quoteProductOptions();renderQuote();renderQuoteHistory();} if(id==="returns")renderReturnRecords(); if(id==="inventory")renderInventory(); if(id==="customers")renderCustomers(); if(id==="suppliers")renderSuppliers();
  if(id==="supplierInRecords")renderSeparatedRecords("進貨"); if(id==="supplierReturnRecords")renderSeparatedRecords("進退貨"); if(id==="customerSaleRecords")renderSeparatedRecords("銷貨"); if(id==="customerReturnRecords")renderSeparatedRecords("客戶退貨");
 }
 document.querySelectorAll(".nav button").forEach(b=>b.onclick=()=>showPanel(b.dataset.panel));
@@ -578,7 +620,7 @@ function init(){
  state.customers=(state.customers||[]).map((c,i)=>Object.assign({code:String(i+1).padStart(4,"0"),priceType:"end",discountFormula:"1",roundMode:"none"},c));
  state.suppliers=(state.suppliers||[{name:"櫻花"},{name:"林內"},{name:"莊頭北"},{name:"喜特麗JTL"}]).map((v,i)=>Object.assign({id:v.id||Date.now()+i,code:String(i+1).padStart(4,"0"),contact:"",phone:"",address:"",note:""},v));
  inDate.value=saleDate.value=today();if(typeof returnDate!=="undefined")returnDate.value=today();if(typeof customerReturnDate!=="undefined")customerReturnDate.value=today();roundMode.value=state.settings.roundMode;lowLimit.value=state.settings.lowLimit;autoDownloadBackup.checked=state.settings.autoDownloadBackup;
- renderSelects();renderDashboard();renderProducts();renderReturnRecords();renderInventory();renderCustomers();renderSuppliers();renderSeparatedRecords("進貨");renderSnapshots();
+ state.quotes=state.quotes||[];renderSelects();renderDashboard();renderProducts();renderReturnRecords();renderInventory();renderCustomers();renderSuppliers();renderSeparatedRecords("進貨");renderSnapshots();quoteProductOptions();newQuote();renderQuoteHistory();
 }
 
 function renderSelects(){
@@ -1376,42 +1418,6 @@ function showIOSHelp(){alert("iPhone／iPad 安裝方式：\n1. 用 Safari 開�
 function updateNetworkStatus(){const el=document.getElementById("netStatus");if(!el)return;el.textContent=navigator.onLine?"已連線":"離線使用";el.style.background=navigator.onLine?"#e7f5ec":"#fff3df";el.style.color=navigator.onLine?"#1b7f45":"#8b5b00"}
 window.addEventListener("online",updateNetworkStatus);window.addEventListener("offline",updateNetworkStatus);updateNetworkStatus();
 if("serviceWorker" in navigator && location.protocol.startsWith("http")){window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(console.error))}
-
-
-const QUOTEKEY="shuangfa_erp_quotes_v60";
-let quoteCart=[];
-function quoteMoney(v){return "$"+Math.round(+v||0).toLocaleString("zh-TW")}
-function initQuote(){
- if(!document.getElementById("quoteNo"))return;
- if(!quoteDate.value)quoteDate.value=today();
- if(!quoteNo.value)quoteNo.value="Q"+today().replaceAll("-","")+"-"+String(Date.now()).slice(-4);
- renderQuote();
-}
-function quoteFindProducts(){
- const q=(quoteSearch.value||"").trim().toLowerCase();
- if(!q){quoteResults.innerHTML="";return}
- const terms=searchTerms(q);const found=state.products.filter(p=>productMatches(p,terms)).slice(0,10);
- quoteResults.innerHTML=found.map((p,i)=>{const c=calc(p);return `<div class="item" onclick="addQuoteProduct('${encodeURIComponent(p.channel)}','${encodeURIComponent(p.id)}')"><div><b>${escapeHtml(p.id)}</b>｜${escapeHtml(p.brand||p.channel)}<div class="muted">${escapeHtml(p.description||p.category||'')}</div></div><div><b>${quoteMoney(c.end)}</b></div></div>`}).join("")||'<div class="notice">找不到商品</div>';
-}
-function addQuoteProduct(ch,id){
- ch=decodeURIComponent(ch);id=decodeURIComponent(id);const p=state.products.find(x=>x.channel===ch&&x.id===id);if(!p)return;
- const qty=Math.max(1,+quoteQty.value||1), price=calc(p).end;const old=quoteCart.find(x=>x.channel===ch&&x.id===id&&x.price===price);
- if(old)old.qty+=qty;else quoteCart.push({channel:ch,id:p.id,name:p.description||p.category||'',qty,price});
- quoteSearch.value="";quoteResults.innerHTML="";renderQuote();toast("已加入估價單");
-}
-function renderQuote(){
- if(!document.getElementById("quoteItems"))return;
- quoteItems.innerHTML=quoteCart.length?quoteCart.map((x,i)=>`<tr><td><b>${escapeHtml(x.id)}</b><div class="muted">${escapeHtml(x.name)}</div></td><td><input type="number" min="1" value="${x.qty}" oninput="quoteCart[${i}].qty=Math.max(1,+this.value||1);renderQuote()"></td><td><input type="number" min="0" value="${Math.round(x.price)}" oninput="quoteCart[${i}].price=Math.max(0,+this.value||0);renderQuote()"></td><td>${quoteMoney(x.qty*x.price)}</td><td><button class="danger" onclick="quoteCart.splice(${i},1);renderQuote()">刪除</button></td></tr>`).join(""):'<tr><td colspan="5" class="notice">尚未加入商品。</td></tr>';
- const sub=quoteCart.reduce((a,x)=>a+x.qty*x.price,0),rate=Math.max(0,+quoteTaxRate.value||0),tax=Math.round(sub*rate/100),total=sub+tax;
- quoteSubtotal.textContent=quoteMoney(sub);quoteTax.textContent=quoteMoney(tax);quoteTotal.textContent=quoteMoney(total);
-}
-function currentQuote(){const sub=quoteCart.reduce((a,x)=>a+x.qty*x.price,0),rate=Math.max(0,+quoteTaxRate.value||0),tax=Math.round(sub*rate/100);return {no:quoteNo.value,date:quoteDate.value,customer:quoteCustomer.value,phone:quotePhone.value,address:quoteAddress.value,note:quoteNote.value,items:JSON.parse(JSON.stringify(quoteCart)),subtotal:sub,taxRate:rate,tax,total:sub+tax,updatedAt:new Date().toISOString()}}
-function saveQuote(){if(!quoteCart.length){toast("請先加入商品");return}let list=[];try{list=JSON.parse(storageGet(QUOTEKEY)||"[]")}catch{}const q=currentQuote();const i=list.findIndex(x=>x.no===q.no);if(i>=0)list[i]=q;else list.unshift(q);storageSet(QUOTEKEY,JSON.stringify(list.slice(0,200)));renderSavedQuotes();toast("估價單已儲存")}
-function renderSavedQuotes(){if(!document.getElementById("savedQuoteList"))return;let list=[];try{list=JSON.parse(storageGet(QUOTEKEY)||"[]")}catch{}savedQuoteList.innerHTML=list.length?list.slice(0,30).map((q,i)=>`<div class="item"><div onclick="loadQuote(${i})"><b>${escapeHtml(q.no)}</b>｜${escapeHtml(q.customer||'未填客戶')}<div class="muted">${escapeHtml(q.date||'')}｜${q.items.length} 項｜${quoteMoney(q.total)}</div></div><button class="danger" onclick="deleteQuote(${i})">刪除</button></div>`).join(""):'<p class="notice">尚無已儲存估價單。</p>'}
-function loadQuote(i){let list=JSON.parse(storageGet(QUOTEKEY)||"[]");const q=list[i];if(!q)return;quoteNo.value=q.no;quoteDate.value=q.date;quoteCustomer.value=q.customer||"";quotePhone.value=q.phone||"";quoteAddress.value=q.address||"";quoteNote.value=q.note||"";quoteTaxRate.value=q.taxRate??5;quoteCart=JSON.parse(JSON.stringify(q.items||[]));renderQuote();window.scrollTo({top:0,behavior:"smooth"})}
-function deleteQuote(i){if(!confirm("確定刪除這張估價單？"))return;let list=JSON.parse(storageGet(QUOTEKEY)||"[]");list.splice(i,1);storageSet(QUOTEKEY,JSON.stringify(list));renderSavedQuotes()}
-function newQuote(){quoteCart=[];quoteNo.value="";quoteDate.value=today();quoteCustomer.value=quotePhone.value=quoteAddress.value=quoteNote.value="";quoteTaxRate.value=5;initQuote();renderQuote()}
-function printQuote(){if(!quoteCart.length){toast("請先加入商品");return}const q=currentQuote(),w=window.open("","_blank");const rows=q.items.map(x=>`<tr><td>${escapeHtml(x.id)}<br><small>${escapeHtml(x.name)}</small></td><td>${x.qty}</td><td class="r">${quoteMoney(x.price)}</td><td class="r">${quoteMoney(x.qty*x.price)}</td></tr>`).join("");w.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>${escapeHtml(q.no)}</title><style>body{font-family:Arial,'Noto Sans TC',sans-serif;padding:28px;color:#111}h1{text-align:center;margin:0}.meta{margin:18px 0;line-height:1.8}table{width:100%;border-collapse:collapse}th,td{border:1px solid #555;padding:8px}th{background:#eee}.r{text-align:right}.sum{text-align:right;line-height:1.8;margin-top:15px;font-size:17px}.note{margin-top:18px;white-space:pre-wrap}</style></head><body><h1>雙發水電五金 估價單</h1><div class="meta">估價單號：${escapeHtml(q.no)}　日期：${escapeHtml(q.date)}<br>客戶：${escapeHtml(q.customer||'')}　電話：${escapeHtml(q.phone||'')}<br>地址：${escapeHtml(q.address||'')}</div><table><tr><th>品項</th><th>數量</th><th>單價</th><th>小計</th></tr>${rows}</table><div class="sum">未稅：${quoteMoney(q.subtotal)}<br>稅金（${q.taxRate}%）：${quoteMoney(q.tax)}<br><b>總計：${quoteMoney(q.total)}</b></div><div class="note">備註：${escapeHtml(q.note||'')}</div><script>window.onload=()=>setTimeout(()=>window.print(),300)<\/script></body></html>`);w.document.close()}
 
 init();
 </script>
