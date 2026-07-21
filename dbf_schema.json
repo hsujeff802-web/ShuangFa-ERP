@@ -1,0 +1,1928 @@
+[
+  {
+    "file": "XG_CUS.DBF",
+    "records": 5304,
+    "fields": [
+      {
+        "name": "FCUST",
+        "type": "C",
+        "length": 4,
+        "decimals": 0
+      },
+      {
+        "name": "FCUSTC",
+        "type": "C",
+        "length": 4,
+        "decimals": 0
+      },
+      {
+        "name": "FHEAD",
+        "type": "C",
+        "length": 1,
+        "decimals": 0
+      },
+      {
+        "name": "FCUSTX",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FPRCID",
+        "type": "C",
+        "length": 1,
+        "decimals": 0
+      },
+      {
+        "name": "FBONUS",
+        "type": "N",
+        "length": 6,
+        "decimals": 2
+      },
+      {
+        "name": "FDSC",
+        "type": "N",
+        "length": 3,
+        "decimals": 0
+      },
+      {
+        "name": "FDATE",
+        "type": "D",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FNAME",
+        "type": "C",
+        "length": 36,
+        "decimals": 0
+      },
+      {
+        "name": "FNAME1",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FMEN1",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FMEN2",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FTEL",
+        "type": "C",
+        "length": 26,
+        "decimals": 0
+      },
+      {
+        "name": "FFAX",
+        "type": "C",
+        "length": 15,
+        "decimals": 0
+      },
+      {
+        "name": "FEMAIL",
+        "type": "C",
+        "length": 30,
+        "decimals": 0
+      },
+      {
+        "name": "FPDATE",
+        "type": "C",
+        "length": 2,
+        "decimals": 0
+      },
+      {
+        "name": "FCRED",
+        "type": "N",
+        "length": 9,
+        "decimals": 0
+      },
+      {
+        "name": "FTAX_NO",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FADRS",
+        "type": "C",
+        "length": 50,
+        "decimals": 0
+      },
+      {
+        "name": "FTX_ADRS",
+        "type": "C",
+        "length": 50,
+        "decimals": 0
+      },
+      {
+        "name": "FBANK",
+        "type": "C",
+        "length": 20,
+        "decimals": 0
+      },
+      {
+        "name": "FBK_NO",
+        "type": "C",
+        "length": 20,
+        "decimals": 0
+      },
+      {
+        "name": "FCRC_ID",
+        "type": "C",
+        "length": 2,
+        "decimals": 0
+      },
+      {
+        "name": "FRATE",
+        "type": "N",
+        "length": 9,
+        "decimals": 3
+      },
+      {
+        "name": "FCR",
+        "type": "C",
+        "length": 12,
+        "decimals": 0
+      },
+      {
+        "name": "FDB",
+        "type": "C",
+        "length": 12,
+        "decimals": 0
+      },
+      {
+        "name": "FREM",
+        "type": "C",
+        "length": 20,
+        "decimals": 0
+      },
+      {
+        "name": "FSELE",
+        "type": "L",
+        "length": 1,
+        "decimals": 0
+      },
+      {
+        "name": "FTAX",
+        "type": "C",
+        "length": 1,
+        "decimals": 0
+      },
+      {
+        "name": "FATTR",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FPTYPE",
+        "type": "C",
+        "length": 1,
+        "decimals": 0
+      },
+      {
+        "name": "FZCODE1",
+        "type": "C",
+        "length": 5,
+        "decimals": 0
+      },
+      {
+        "name": "FZCODE2",
+        "type": "C",
+        "length": 5,
+        "decimals": 0
+      },
+      {
+        "name": "FPRNPRC",
+        "type": "L",
+        "length": 1,
+        "decimals": 0
+      },
+      {
+        "name": "FNAMEX",
+        "type": "C",
+        "length": 36,
+        "decimals": 0
+      },
+      {
+        "name": "FTEL1",
+        "type": "C",
+        "length": 13,
+        "decimals": 0
+      },
+      {
+        "name": "FCAR",
+        "type": "C",
+        "length": 30,
+        "decimals": 0
+      },
+      {
+        "name": "FCLK",
+        "type": "C",
+        "length": 4,
+        "decimals": 0
+      },
+      {
+        "name": "FADRSX",
+        "type": "C",
+        "length": 1,
+        "decimals": 0
+      }
+    ]
+  },
+  {
+    "file": "XG_EAC1.DBF",
+    "records": 0,
+    "fields": [
+      {
+        "name": "FSHOP",
+        "type": "C",
+        "length": 4,
+        "decimals": 0
+      },
+      {
+        "name": "FTIME",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FDATE",
+        "type": "D",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FECR",
+        "type": "N",
+        "length": 3,
+        "decimals": 0
+      },
+      {
+        "name": "FTOT",
+        "type": "N",
+        "length": 11,
+        "decimals": 1
+      },
+      {
+        "name": "FCHG",
+        "type": "N",
+        "length": 11,
+        "decimals": 1
+      },
+      {
+        "name": "FGPF",
+        "type": "N",
+        "length": 11,
+        "decimals": 1
+      },
+      {
+        "name": "FMEN",
+        "type": "N",
+        "length": 9,
+        "decimals": 0
+      },
+      {
+        "name": "FREM",
+        "type": "C",
+        "length": 20,
+        "decimals": 0
+      },
+      {
+        "name": "FXTAX",
+        "type": "N",
+        "length": 11,
+        "decimals": 1
+      }
+    ]
+  },
+  {
+    "file": "XG_EACC.DBF",
+    "records": 0,
+    "fields": [
+      {
+        "name": "FSHOP",
+        "type": "C",
+        "length": 4,
+        "decimals": 0
+      },
+      {
+        "name": "FTIME",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FDATE",
+        "type": "D",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FTOT",
+        "type": "N",
+        "length": 11,
+        "decimals": 1
+      },
+      {
+        "name": "FCHG",
+        "type": "N",
+        "length": 11,
+        "decimals": 1
+      },
+      {
+        "name": "FGPF",
+        "type": "N",
+        "length": 11,
+        "decimals": 1
+      },
+      {
+        "name": "FMEN",
+        "type": "N",
+        "length": 9,
+        "decimals": 0
+      },
+      {
+        "name": "FSP",
+        "type": "N",
+        "length": 11,
+        "decimals": 1
+      },
+      {
+        "name": "FNEW",
+        "type": "N",
+        "length": 11,
+        "decimals": 1
+      },
+      {
+        "name": "FXTAX",
+        "type": "N",
+        "length": 11,
+        "decimals": 1
+      },
+      {
+        "name": "FREM",
+        "type": "C",
+        "length": 20,
+        "decimals": 0
+      }
+    ]
+  },
+  {
+    "file": "XG_KIL.DBF",
+    "records": 1,
+    "fields": [
+      {
+        "name": "FYES",
+        "type": "L",
+        "length": 1,
+        "decimals": 0
+      }
+    ]
+  },
+  {
+    "file": "XG_MPAY.DBF",
+    "records": 0,
+    "fields": [
+      {
+        "name": "FOK",
+        "type": "L",
+        "length": 1,
+        "decimals": 0
+      },
+      {
+        "name": "FID",
+        "type": "C",
+        "length": 2,
+        "decimals": 0
+      },
+      {
+        "name": "FSQ",
+        "type": "C",
+        "length": 9,
+        "decimals": 0
+      },
+      {
+        "name": "FSQC",
+        "type": "C",
+        "length": 11,
+        "decimals": 0
+      },
+      {
+        "name": "FDATE",
+        "type": "D",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FEDATE",
+        "type": "D",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FSHOP",
+        "type": "C",
+        "length": 4,
+        "decimals": 0
+      },
+      {
+        "name": "FWHO",
+        "type": "C",
+        "length": 4,
+        "decimals": 0
+      },
+      {
+        "name": "FPTYPE",
+        "type": "C",
+        "length": 1,
+        "decimals": 0
+      },
+      {
+        "name": "FTOT",
+        "type": "N",
+        "length": 14,
+        "decimals": 2
+      },
+      {
+        "name": "FPAY",
+        "type": "N",
+        "length": 14,
+        "decimals": 2
+      },
+      {
+        "name": "FFREE",
+        "type": "N",
+        "length": 14,
+        "decimals": 2
+      },
+      {
+        "name": "FAMT",
+        "type": "N",
+        "length": 14,
+        "decimals": 2
+      },
+      {
+        "name": "FDSC",
+        "type": "N",
+        "length": 3,
+        "decimals": 0
+      },
+      {
+        "name": "FTAX_NO",
+        "type": "C",
+        "length": 10,
+        "decimals": 0
+      },
+      {
+        "name": "FTAX_OK",
+        "type": "L",
+        "length": 1,
+        "decimals": 0
+      },
+      {
+        "name": "FTAX",
+        "type": "C",
+        "length": 1,
+        "decimals": 0
+      },
+      {
+        "name": "FHTAX",
+        "type": "N",
+        "length": 9,
+        "decimals": 0
+      },
+      {
+        "name": "FREM",
+        "type": "C",
+        "length": 60,
+        "decimals": 0
+      },
+      {
+        "name": "FUSR",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      }
+    ]
+  },
+  {
+    "file": "XG_MRCV.DBF",
+    "records": 0,
+    "fields": [
+      {
+        "name": "FOK",
+        "type": "L",
+        "length": 1,
+        "decimals": 0
+      },
+      {
+        "name": "FID",
+        "type": "C",
+        "length": 2,
+        "decimals": 0
+      },
+      {
+        "name": "FSQ",
+        "type": "C",
+        "length": 9,
+        "decimals": 0
+      },
+      {
+        "name": "FSQC",
+        "type": "C",
+        "length": 11,
+        "decimals": 0
+      },
+      {
+        "name": "FDATE",
+        "type": "D",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FEDATE",
+        "type": "D",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FSHOP",
+        "type": "C",
+        "length": 4,
+        "decimals": 0
+      },
+      {
+        "name": "FWHO",
+        "type": "C",
+        "length": 4,
+        "decimals": 0
+      },
+      {
+        "name": "FPTYPE",
+        "type": "C",
+        "length": 1,
+        "decimals": 0
+      },
+      {
+        "name": "FTOT",
+        "type": "N",
+        "length": 14,
+        "decimals": 2
+      },
+      {
+        "name": "FPAY",
+        "type": "N",
+        "length": 14,
+        "decimals": 2
+      },
+      {
+        "name": "FFREE",
+        "type": "N",
+        "length": 14,
+        "decimals": 2
+      },
+      {
+        "name": "FAMT",
+        "type": "N",
+        "length": 14,
+        "decimals": 2
+      },
+      {
+        "name": "FDSC",
+        "type": "N",
+        "length": 3,
+        "decimals": 0
+      },
+      {
+        "name": "FTAX_NO",
+        "type": "C",
+        "length": 10,
+        "decimals": 0
+      },
+      {
+        "name": "FTAX_OK",
+        "type": "L",
+        "length": 1,
+        "decimals": 0
+      },
+      {
+        "name": "FTAX",
+        "type": "C",
+        "length": 1,
+        "decimals": 0
+      },
+      {
+        "name": "FHTAX",
+        "type": "N",
+        "length": 9,
+        "decimals": 0
+      },
+      {
+        "name": "FREM",
+        "type": "C",
+        "length": 60,
+        "decimals": 0
+      },
+      {
+        "name": "FUSR",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      }
+    ]
+  },
+  {
+    "file": "xg_accdep.dbf",
+    "records": 168,
+    "fields": [
+      {
+        "name": "FDEP",
+        "type": "C",
+        "length": 12,
+        "decimals": 0
+      },
+      {
+        "name": "FNAME",
+        "type": "C",
+        "length": 24,
+        "decimals": 0
+      },
+      {
+        "name": "FISDEP",
+        "type": "L",
+        "length": 1,
+        "decimals": 0
+      },
+      {
+        "name": "FCR_DB",
+        "type": "C",
+        "length": 1,
+        "decimals": 0
+      },
+      {
+        "name": "FMINUS",
+        "type": "L",
+        "length": 1,
+        "decimals": 0
+      },
+      {
+        "name": "FATTR",
+        "type": "C",
+        "length": 3,
+        "decimals": 0
+      },
+      {
+        "name": "FREM",
+        "type": "C",
+        "length": 20,
+        "decimals": 0
+      },
+      {
+        "name": "FNAME1",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FLEN",
+        "type": "N",
+        "length": 2,
+        "decimals": 0
+      }
+    ]
+  },
+  {
+    "file": "xg_bom.dbf",
+    "records": 0,
+    "fields": [
+      {
+        "name": "FRNOX",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FSEC",
+        "type": "C",
+        "length": 1,
+        "decimals": 0
+      },
+      {
+        "name": "FRNO",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FRNO1",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FQTY",
+        "type": "N",
+        "length": 13,
+        "decimals": 4
+      },
+      {
+        "name": "FQTYK",
+        "type": "N",
+        "length": 9,
+        "decimals": 3
+      },
+      {
+        "name": "FLOSS",
+        "type": "N",
+        "length": 5,
+        "decimals": 2
+      },
+      {
+        "name": "FTRS",
+        "type": "N",
+        "length": 7,
+        "decimals": 3
+      },
+      {
+        "name": "FREM",
+        "type": "C",
+        "length": 50,
+        "decimals": 0
+      }
+    ]
+  },
+  {
+    "file": "xg_bomctl.dbf",
+    "records": 0,
+    "fields": [
+      {
+        "name": "FTRS",
+        "type": "L",
+        "length": 1,
+        "decimals": 0
+      },
+      {
+        "name": "FDATE",
+        "type": "D",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FSQ",
+        "type": "C",
+        "length": 9,
+        "decimals": 0
+      },
+      {
+        "name": "FRNO",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FWHO",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FSEC",
+        "type": "C",
+        "length": 4,
+        "decimals": 0
+      },
+      {
+        "name": "FMEN",
+        "type": "N",
+        "length": 9,
+        "decimals": 2
+      },
+      {
+        "name": "FHOUR",
+        "type": "N",
+        "length": 9,
+        "decimals": 2
+      },
+      {
+        "name": "FQTY",
+        "type": "N",
+        "length": 13,
+        "decimals": 3
+      },
+      {
+        "name": "FQTYB",
+        "type": "N",
+        "length": 13,
+        "decimals": 3
+      },
+      {
+        "name": "FST_ID",
+        "type": "C",
+        "length": 1,
+        "decimals": 0
+      },
+      {
+        "name": "FRPT_NO1",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FQ1",
+        "type": "N",
+        "length": 11,
+        "decimals": 2
+      },
+      {
+        "name": "FRPT_NO2",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FQ2",
+        "type": "N",
+        "length": 11,
+        "decimals": 2
+      },
+      {
+        "name": "FRPT_NO3",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FQ3",
+        "type": "N",
+        "length": 11,
+        "decimals": 2
+      },
+      {
+        "name": "FRPT_NO4",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FQ4",
+        "type": "N",
+        "length": 11,
+        "decimals": 2
+      },
+      {
+        "name": "FRPT_NO5",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FQ5",
+        "type": "N",
+        "length": 11,
+        "decimals": 2
+      },
+      {
+        "name": "FRPT_NO6",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FQ6",
+        "type": "N",
+        "length": 11,
+        "decimals": 2
+      },
+      {
+        "name": "FRPT_NO7",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FQ7",
+        "type": "N",
+        "length": 11,
+        "decimals": 2
+      },
+      {
+        "name": "FRPT_NO8",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FQ8",
+        "type": "N",
+        "length": 11,
+        "decimals": 2
+      },
+      {
+        "name": "FRPT_NO9",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FQ9",
+        "type": "N",
+        "length": 11,
+        "decimals": 2
+      },
+      {
+        "name": "FREM",
+        "type": "C",
+        "length": 20,
+        "decimals": 0
+      },
+      {
+        "name": "FC1",
+        "type": "N",
+        "length": 11,
+        "decimals": 2
+      },
+      {
+        "name": "FC2",
+        "type": "N",
+        "length": 11,
+        "decimals": 2
+      },
+      {
+        "name": "FC3",
+        "type": "N",
+        "length": 11,
+        "decimals": 2
+      },
+      {
+        "name": "FC4",
+        "type": "N",
+        "length": 11,
+        "decimals": 2
+      },
+      {
+        "name": "FC5",
+        "type": "N",
+        "length": 11,
+        "decimals": 2
+      },
+      {
+        "name": "FC6",
+        "type": "N",
+        "length": 11,
+        "decimals": 2
+      },
+      {
+        "name": "FC7",
+        "type": "N",
+        "length": 11,
+        "decimals": 2
+      },
+      {
+        "name": "FC8",
+        "type": "N",
+        "length": 11,
+        "decimals": 2
+      },
+      {
+        "name": "FC9",
+        "type": "N",
+        "length": 11,
+        "decimals": 2
+      },
+      {
+        "name": "FRPT_NOX",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      }
+    ]
+  },
+  {
+    "file": "xg_bomobj.dbf",
+    "records": 0,
+    "fields": [
+      {
+        "name": "FRNO",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FDATE1",
+        "type": "D",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FDATE2",
+        "type": "D",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FQTY",
+        "type": "N",
+        "length": 14,
+        "decimals": 3
+      },
+      {
+        "name": "FUCOST",
+        "type": "N",
+        "length": 14,
+        "decimals": 3
+      },
+      {
+        "name": "FURATE",
+        "type": "N",
+        "length": 6,
+        "decimals": 2
+      },
+      {
+        "name": "FPCOST",
+        "type": "N",
+        "length": 14,
+        "decimals": 3
+      },
+      {
+        "name": "FLCOST",
+        "type": "N",
+        "length": 14,
+        "decimals": 3
+      },
+      {
+        "name": "FMCOST",
+        "type": "N",
+        "length": 14,
+        "decimals": 3
+      },
+      {
+        "name": "FWCOST",
+        "type": "N",
+        "length": 14,
+        "decimals": 3
+      },
+      {
+        "name": "FOTHER",
+        "type": "N",
+        "length": 14,
+        "decimals": 3
+      },
+      {
+        "name": "FREM",
+        "type": "C",
+        "length": 20,
+        "decimals": 0
+      }
+    ]
+  },
+  {
+    "file": "xg_bomodr.dbf",
+    "records": 0,
+    "fields": [
+      {
+        "name": "FOK",
+        "type": "L",
+        "length": 1,
+        "decimals": 0
+      },
+      {
+        "name": "FSQ",
+        "type": "C",
+        "length": 9,
+        "decimals": 0
+      },
+      {
+        "name": "FSQ1",
+        "type": "C",
+        "length": 1,
+        "decimals": 0
+      },
+      {
+        "name": "FCUST",
+        "type": "C",
+        "length": 4,
+        "decimals": 0
+      },
+      {
+        "name": "FMEN",
+        "type": "C",
+        "length": 4,
+        "decimals": 0
+      },
+      {
+        "name": "FDATE",
+        "type": "D",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FRNO",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FQTY",
+        "type": "N",
+        "length": 12,
+        "decimals": 3
+      },
+      {
+        "name": "FREM",
+        "type": "C",
+        "length": 30,
+        "decimals": 0
+      }
+    ]
+  },
+  {
+    "file": "xg_bompak.dbf",
+    "records": 0,
+    "fields": [
+      {
+        "name": "FRPT_NO",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FRPT_NO1",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FRPT_NO2",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FRPT_NO3",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FRPT_NO4",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FRPT_NO5",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FRPT_NO6",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FRPT_NO7",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FRPT_NO8",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FRPT_NO9",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FR1",
+        "type": "N",
+        "length": 5,
+        "decimals": 2
+      },
+      {
+        "name": "FR2",
+        "type": "N",
+        "length": 5,
+        "decimals": 2
+      },
+      {
+        "name": "FR3",
+        "type": "N",
+        "length": 5,
+        "decimals": 2
+      },
+      {
+        "name": "FR4",
+        "type": "N",
+        "length": 5,
+        "decimals": 2
+      },
+      {
+        "name": "FR5",
+        "type": "N",
+        "length": 5,
+        "decimals": 2
+      },
+      {
+        "name": "FR6",
+        "type": "N",
+        "length": 5,
+        "decimals": 2
+      },
+      {
+        "name": "FR7",
+        "type": "N",
+        "length": 5,
+        "decimals": 2
+      },
+      {
+        "name": "FR8",
+        "type": "N",
+        "length": 5,
+        "decimals": 2
+      },
+      {
+        "name": "FR9",
+        "type": "N",
+        "length": 5,
+        "decimals": 2
+      }
+    ]
+  },
+  {
+    "file": "xg_bomsec.dbf",
+    "records": 2,
+    "fields": [
+      {
+        "name": "FSEC",
+        "type": "C",
+        "length": 4,
+        "decimals": 0
+      },
+      {
+        "name": "FNAME",
+        "type": "C",
+        "length": 16,
+        "decimals": 0
+      },
+      {
+        "name": "FHOUR",
+        "type": "N",
+        "length": 9,
+        "decimals": 2
+      },
+      {
+        "name": "FCOST",
+        "type": "N",
+        "length": 9,
+        "decimals": 2
+      }
+    ]
+  },
+  {
+    "file": "xg_bomtim.dbf",
+    "records": 0,
+    "fields": [
+      {
+        "name": "FDATE",
+        "type": "D",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FMEN",
+        "type": "C",
+        "length": 4,
+        "decimals": 0
+      },
+      {
+        "name": "FSEC1",
+        "type": "C",
+        "length": 4,
+        "decimals": 0
+      },
+      {
+        "name": "FHOUR1",
+        "type": "N",
+        "length": 6,
+        "decimals": 2
+      },
+      {
+        "name": "FSEC2",
+        "type": "C",
+        "length": 4,
+        "decimals": 0
+      },
+      {
+        "name": "FHOUR2",
+        "type": "N",
+        "length": 6,
+        "decimals": 2
+      },
+      {
+        "name": "FSEC3",
+        "type": "C",
+        "length": 4,
+        "decimals": 0
+      },
+      {
+        "name": "FHOUR3",
+        "type": "N",
+        "length": 6,
+        "decimals": 2
+      },
+      {
+        "name": "FSEC4",
+        "type": "C",
+        "length": 4,
+        "decimals": 0
+      },
+      {
+        "name": "FHOUR4",
+        "type": "N",
+        "length": 6,
+        "decimals": 2
+      },
+      {
+        "name": "FSEC5",
+        "type": "C",
+        "length": 4,
+        "decimals": 0
+      },
+      {
+        "name": "FHOUR5",
+        "type": "N",
+        "length": 6,
+        "decimals": 2
+      },
+      {
+        "name": "FSEC6",
+        "type": "C",
+        "length": 4,
+        "decimals": 0
+      },
+      {
+        "name": "FHOUR6",
+        "type": "N",
+        "length": 6,
+        "decimals": 2
+      },
+      {
+        "name": "FSEC7",
+        "type": "C",
+        "length": 4,
+        "decimals": 0
+      },
+      {
+        "name": "FHOUR7",
+        "type": "N",
+        "length": 6,
+        "decimals": 2
+      },
+      {
+        "name": "FSEC8",
+        "type": "C",
+        "length": 4,
+        "decimals": 0
+      },
+      {
+        "name": "FHOUR8",
+        "type": "N",
+        "length": 6,
+        "decimals": 2
+      },
+      {
+        "name": "FREM",
+        "type": "C",
+        "length": 12,
+        "decimals": 0
+      }
+    ]
+  },
+  {
+    "file": "xg_buse.dbf",
+    "records": 0,
+    "fields": [
+      {
+        "name": "FTRS",
+        "type": "L",
+        "length": 1,
+        "decimals": 0
+      },
+      {
+        "name": "FSQ",
+        "type": "C",
+        "length": 9,
+        "decimals": 0
+      },
+      {
+        "name": "FODR",
+        "type": "C",
+        "length": 9,
+        "decimals": 0
+      },
+      {
+        "name": "FDATE",
+        "type": "D",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FST_ID",
+        "type": "C",
+        "length": 1,
+        "decimals": 0
+      },
+      {
+        "name": "FRNO",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FSEC",
+        "type": "C",
+        "length": 1,
+        "decimals": 0
+      },
+      {
+        "name": "FQTY",
+        "type": "N",
+        "length": 12,
+        "decimals": 4
+      },
+      {
+        "name": "FQTYK",
+        "type": "N",
+        "length": 9,
+        "decimals": 3
+      },
+      {
+        "name": "FQTYR",
+        "type": "N",
+        "length": 12,
+        "decimals": 4
+      },
+      {
+        "name": "FPRIC",
+        "type": "N",
+        "length": 11,
+        "decimals": 2
+      },
+      {
+        "name": "FUSER",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FREM",
+        "type": "C",
+        "length": 12,
+        "decimals": 0
+      }
+    ]
+  },
+  {
+    "file": "xg_inot.dbf",
+    "records": 322080,
+    "fields": [
+      {
+        "name": "FID",
+        "type": "C",
+        "length": 4,
+        "decimals": 0
+      },
+      {
+        "name": "FWKID",
+        "type": "C",
+        "length": 1,
+        "decimals": 0
+      },
+      {
+        "name": "FRPT_NO",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FDATE",
+        "type": "D",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FIN",
+        "type": "N",
+        "length": 10,
+        "decimals": 2
+      },
+      {
+        "name": "FUSE",
+        "type": "N",
+        "length": 10,
+        "decimals": 2
+      },
+      {
+        "name": "FCR_Q",
+        "type": "N",
+        "length": 10,
+        "decimals": 2
+      },
+      {
+        "name": "FUSER",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      }
+    ]
+  },
+  {
+    "file": "xg_iuse.dbf",
+    "records": 0,
+    "fields": [
+      {
+        "name": "FCHK",
+        "type": "L",
+        "length": 1,
+        "decimals": 0
+      },
+      {
+        "name": "FID",
+        "type": "C",
+        "length": 1,
+        "decimals": 0
+      },
+      {
+        "name": "FSQ",
+        "type": "C",
+        "length": 9,
+        "decimals": 0
+      },
+      {
+        "name": "FDATE",
+        "type": "D",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FST_ID",
+        "type": "C",
+        "length": 1,
+        "decimals": 0
+      },
+      {
+        "name": "FRPT_NO",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FQTY",
+        "type": "N",
+        "length": 12,
+        "decimals": 3
+      },
+      {
+        "name": "FPRIC",
+        "type": "N",
+        "length": 13,
+        "decimals": 2
+      },
+      {
+        "name": "FPRIC1",
+        "type": "N",
+        "length": 13,
+        "decimals": 2
+      },
+      {
+        "name": "FCOST",
+        "type": "N",
+        "length": 13,
+        "decimals": 2
+      },
+      {
+        "name": "FDEP",
+        "type": "C",
+        "length": 3,
+        "decimals": 0
+      },
+      {
+        "name": "FUSER",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FREM",
+        "type": "C",
+        "length": 24,
+        "decimals": 0
+      },
+      {
+        "name": "FVERCHK",
+        "type": "C",
+        "length": 1,
+        "decimals": 0
+      },
+      {
+        "name": "FBOM",
+        "type": "L",
+        "length": 1,
+        "decimals": 0
+      }
+    ]
+  },
+  {
+    "file": "xg_jp9.dbf",
+    "records": 4,
+    "fields": [
+      {
+        "name": "FPT_NO",
+        "type": "C",
+        "length": 13,
+        "decimals": 0
+      },
+      {
+        "name": "FP1",
+        "type": "N",
+        "length": 9,
+        "decimals": 2
+      },
+      {
+        "name": "FP2",
+        "type": "N",
+        "length": 9,
+        "decimals": 2
+      },
+      {
+        "name": "FP3",
+        "type": "N",
+        "length": 9,
+        "decimals": 2
+      },
+      {
+        "name": "FP4",
+        "type": "N",
+        "length": 9,
+        "decimals": 2
+      },
+      {
+        "name": "FP5",
+        "type": "N",
+        "length": 9,
+        "decimals": 2
+      },
+      {
+        "name": "FP6",
+        "type": "N",
+        "length": 9,
+        "decimals": 2
+      },
+      {
+        "name": "FP7",
+        "type": "N",
+        "length": 9,
+        "decimals": 2
+      },
+      {
+        "name": "FP8",
+        "type": "N",
+        "length": 9,
+        "decimals": 2
+      },
+      {
+        "name": "FP9",
+        "type": "N",
+        "length": 9,
+        "decimals": 2
+      },
+      {
+        "name": "FDATE1",
+        "type": "D",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FDATE2",
+        "type": "D",
+        "length": 8,
+        "decimals": 0
+      }
+    ]
+  },
+  {
+    "file": "xg_men.dbf",
+    "records": 6,
+    "fields": [
+      {
+        "name": "FRUN",
+        "type": "L",
+        "length": 1,
+        "decimals": 0
+      },
+      {
+        "name": "FSHOP",
+        "type": "C",
+        "length": 4,
+        "decimals": 0
+      },
+      {
+        "name": "FWK_NO",
+        "type": "C",
+        "length": 4,
+        "decimals": 0
+      },
+      {
+        "name": "FRIGHT",
+        "type": "C",
+        "length": 10,
+        "decimals": 0
+      },
+      {
+        "name": "FPASS",
+        "type": "C",
+        "length": 4,
+        "decimals": 0
+      },
+      {
+        "name": "FGRP",
+        "type": "C",
+        "length": 2,
+        "decimals": 0
+      },
+      {
+        "name": "FNAME",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FSEX",
+        "type": "C",
+        "length": 2,
+        "decimals": 0
+      },
+      {
+        "name": "FRATE",
+        "type": "C",
+        "length": 12,
+        "decimals": 0
+      },
+      {
+        "name": "FDEP",
+        "type": "C",
+        "length": 3,
+        "decimals": 0
+      },
+      {
+        "name": "FTEL",
+        "type": "C",
+        "length": 15,
+        "decimals": 0
+      },
+      {
+        "name": "FADRS",
+        "type": "C",
+        "length": 50,
+        "decimals": 0
+      },
+      {
+        "name": "FADRS1",
+        "type": "C",
+        "length": 50,
+        "decimals": 0
+      },
+      {
+        "name": "FID_NO",
+        "type": "C",
+        "length": 10,
+        "decimals": 0
+      },
+      {
+        "name": "FBANK",
+        "type": "C",
+        "length": 20,
+        "decimals": 0
+      },
+      {
+        "name": "FBK_NO",
+        "type": "C",
+        "length": 20,
+        "decimals": 0
+      },
+      {
+        "name": "FTAX",
+        "type": "N",
+        "length": 6,
+        "decimals": 0
+      },
+      {
+        "name": "FSHCOOL",
+        "type": "C",
+        "length": 10,
+        "decimals": 0
+      },
+      {
+        "name": "FBIRTH",
+        "type": "D",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FBPLC",
+        "type": "C",
+        "length": 12,
+        "decimals": 0
+      },
+      {
+        "name": "FJDATE",
+        "type": "D",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FQDATE",
+        "type": "D",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FINMD",
+        "type": "C",
+        "length": 1,
+        "decimals": 0
+      },
+      {
+        "name": "FHRPAY",
+        "type": "N",
+        "length": 6,
+        "decimals": 1
+      },
+      {
+        "name": "FREM",
+        "type": "C",
+        "length": 16,
+        "decimals": 0
+      },
+      {
+        "name": "FSEC",
+        "type": "C",
+        "length": 1,
+        "decimals": 0
+      }
+    ]
+  },
+  {
+    "file": "xg_prccg.dbf",
+    "records": 0,
+    "fields": [
+      {
+        "name": "FRPT_NO",
+        "type": "C",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FDATE",
+        "type": "D",
+        "length": 8,
+        "decimals": 0
+      },
+      {
+        "name": "FCOST",
+        "type": "N",
+        "length": 11,
+        "decimals": 2
+      },
+      {
+        "name": "FPRIC",
+        "type": "N",
+        "length": 11,
+        "decimals": 2
+      },
+      {
+        "name": "FREM",
+        "type": "C",
+        "length": 20,
+        "decimals": 0
+      }
+    ]
+  }
+]
