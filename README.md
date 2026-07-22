@@ -1,14 +1,22 @@
-# 雙發 ERP 10.0.5 固定整頁鍵盤操作版
+# 雙發 ERP 10.1 固定式多頁面版
 
-本版改為桌機固定式整頁工作區：
+本版把原本單一畫面改為真正的多頁面架構。左側每一個選項都會開啟獨立 HTML 頁面，頁首、選單與工作區固定。
 
-- 上方標題固定
-- 左側功能選單固定並可獨立捲動
-- 右側資料畫面使用整個剩餘螢幕
-- 商品、客戶、廠商查詢表格與修改區可同時顯示
-- 每個功能頁獨立捲動，不會整個網頁跳來跳去
-- 保留方向鍵、Tab、Enter、Esc 操作
-- 上方提供「全螢幕」按鈕
-- 手機與平板會自動恢復一般直式畫面
+## 主要頁面
 
-請將 index.html、js 資料夾、.nojekyll 一起上傳。
+- `index.html` 首頁
+- `pos.html` POS 收銀
+- `product-search.html` 商品查詢
+- `customer-search.html` 客戶查詢
+- `supplier-search.html` 廠商查詢
+- `products.html` 商品資料
+- `customers.html` 客戶資料
+- `suppliers.html` 廠商資料
+- `purchase.html` 廠商進貨
+- `sales.html` 客戶銷貨
+- `inventory.html` 庫存管理
+- `daily-close.html` 每日結帳
+
+## GitHub 上傳
+
+請將此資料夾內所有檔案與資料夾一起上傳，不能只上傳 `index.html`。

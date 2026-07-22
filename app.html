@@ -1,0 +1,953 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b4d8c">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="雙發ERP">
+<title>雙發水電五金｜ERP 8.6.2 Professional｜稅別與雙儀表板</title>
+<style>
+:root{--blue:#0b4d8c;--blue2:#1976d2;--bg:#f2f5f9;--card:#fff;--text:#162033;--muted:#667085;--line:#dfe5ec;--red:#c62828;--green:#1b7f45;--gold:#a66b00}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC",sans-serif;background:var(--bg);color:var(--text)}
+header{position:sticky;top:0;z-index:20;background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;padding:14px 16px;box-shadow:0 4px 16px #0002}
+.head{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+h1{font-size:20px;margin:0}.sub{font-size:12px;opacity:.85;margin-top:3px}
+main{max-width:1200px;margin:auto;padding:14px}
+.nav{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;margin-bottom:12px}
+button,.btn{border:0;border-radius:11px;padding:11px 12px;font-size:15px;cursor:pointer}
+.nav button{background:#e6edf5;color:#24364a}.nav button.active{background:var(--blue);color:#fff}
+.card{background:var(--card);border-radius:16px;padding:15px;margin-bottom:12px;box-shadow:0 4px 18px #17203310}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.metric{background:#f7f9fc;border:1px solid #edf0f4;border-radius:13px;padding:13px}.metric small{display:block;color:var(--muted);margin-bottom:5px}.metric b{font-size:21px}
+.searchbar{display:grid;grid-template-columns:1fr auto;gap:8px}input,select,textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:12px;font-size:16px;background:#fff}
+label{display:block;color:var(--muted);font-size:13px;margin:9px 0 5px}
+.primary{background:var(--blue2);color:#fff}.secondary{background:#edf2f7;color:#24364a}.danger{background:#ffebee;color:var(--red)}.success{background:#e7f5ec;color:var(--green)}
+.panel.hidden,.hidden{display:none}
+.chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.chip{background:#edf2f7;padding:8px 11px;border-radius:999px;font-size:14px;cursor:pointer}.chip.active{background:var(--blue);color:#fff}
+.list{display:grid;gap:8px;margin-top:12px}.item{border:1px solid var(--line);border-radius:12px;padding:12px;display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;cursor:pointer}.item:hover{background:#f7fbff;border-color:#9dc7ef}
+.muted{color:var(--muted)}.badge{display:inline-block;padding:3px 8px;border-radius:999px;font-size:12px;background:#edf2f7;margin-right:4px}.badge.direct{background:#fff3df;color:#8b5b00}.badge.exclusive{background:#f0e9ff;color:#6840a0}
+.pricegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:12px}.price{background:#f7f9fc;border-radius:12px;padding:11px}.price small{display:block;color:var(--muted);margin-bottom:4px}.price b{font-size:18px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:9px 6px;border-bottom:1px solid var(--line);vertical-align:top}.scroll{overflow:auto}
+.low{color:var(--red);font-weight:700}.pos{color:var(--green);font-weight:700}.neg{color:var(--red);font-weight:700}
+.formrow{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.toast{position:fixed;z-index:99;left:50%;bottom:24px;transform:translateX(-50%);background:#111827;color:#fff;padding:10px 16px;border-radius:999px;display:none}
+dialog{border:0;border-radius:16px;padding:0;max-width:680px;width:calc(100% - 24px);box-shadow:0 20px 80px #0005}dialog::backdrop{background:#0007}.dialogbody{padding:16px}
+.kpi-title{font-size:13px;color:var(--muted)}.big{font-size:27px;font-weight:800}
+.notice{font-size:13px;color:var(--muted);line-height:1.6}.producthero{display:grid;grid-template-columns:220px 1fr;gap:15px;margin-top:12px}.productphoto{width:100%;height:220px;object-fit:contain;background:#f7f9fc;border:1px solid var(--line);border-radius:14px}.photoempty{height:220px;display:flex;align-items:center;justify-content:center;text-align:center;background:#f7f9fc;border:1px dashed #b8c2cf;border-radius:14px;color:var(--muted);padding:15px}.specbox{background:#f7f9fc;border-radius:12px;padding:11px;margin-top:9px;white-space:pre-wrap;line-height:1.55}.snapshot{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px 0;border-bottom:1px solid var(--line)}
+@media(max-width:850px){.nav{grid-template-columns:repeat(4,1fr)}.grid4{grid-template-columns:repeat(2,1fr)}.pricegrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.producthero{grid-template-columns:1fr}.productphoto,.photoempty{height:240px}header{position:relative}.nav{grid-template-columns:repeat(3,1fr)}.grid4,.grid2,.formrow,.pricegrid{grid-template-columns:1fr}.head{align-items:flex-start}.hide-mobile{display:none}}
+@media print{header,.nav,.no-print{display:none!important}body{background:#fff}.card{box-shadow:none;border:1px solid #ddd}}
+
+.static-catalog{border:3px solid #1b7f45}.static-brand{margin:10px 0;border:1px solid var(--line);border-radius:12px;background:#fff}.static-brand summary{padding:14px;font-weight:800;cursor:pointer;background:#f2f7fd;border-radius:12px}.static-scroll{overflow:auto;max-height:430px}.static-table{width:100%;border-collapse:collapse;min-width:1100px;font-size:13px}.static-table th,.static-table td{padding:9px;border-bottom:1px solid #e6eaf0;text-align:left;vertical-align:top}.static-table th{position:sticky;top:0;background:#0b4d8c;color:#fff;z-index:1}.static-table td:nth-child(n+5){white-space:nowrap;text-align:right}
+
+/* ERP 6.2B POS */
+.pos-layout{display:grid;grid-template-columns:minmax(320px,430px) 1fr;gap:14px}
+.pos-screen{background:#101820;color:#fff;border-radius:16px;padding:14px}
+.pos-qty-label{font-size:14px;color:#b9c7d5}
+.pos-qty{font-size:44px;font-weight:800;text-align:right;background:#061019!important;color:#7CFF91!important;border:2px solid #385060!important;padding:10px 14px!important}
+.pos-code{font-size:23px;font-weight:700}
+.pos-keypad{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:10px}
+.pos-keypad button{font-size:24px;font-weight:800;min-height:58px;border-radius:12px}
+.pos-keypad .wide{grid-column:span 2}
+.pos-scan{grid-column:1/-1;min-height:62px!important;background:#0b7a3e!important;color:#fff!important}
+.pos-message{min-height:48px;margin-top:10px;padding:10px;border-radius:10px;background:#172733;color:#eaf4fb}
+.pos-cart{overflow:auto}
+.pos-cart table{width:100%;border-collapse:collapse;min-width:680px}
+.pos-cart th,.pos-cart td{padding:10px 8px;border-bottom:1px solid var(--line);text-align:left}
+.pos-cart th:nth-child(3),.pos-cart td:nth-child(3),
+.pos-cart th:nth-child(4),.pos-cart td:nth-child(4),
+.pos-cart th:nth-child(5),.pos-cart td:nth-child(5){text-align:right}
+.pos-total{font-size:34px;font-weight:900;text-align:right}
+.pos-payments{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.pos-payments button{min-height:48px;font-weight:700}
+.pos-mode-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.pos-mode-grid label{background:#f7f9fc;border:1px solid var(--line);padding:9px;border-radius:10px}
+.pos-mode-grid input,.pos-mode-grid select{margin-top:5px}
+.pos-delete{padding:7px 10px!important}
+@media(max-width:900px){
+ .pos-layout{grid-template-columns:1fr}
+ .pos-payments{grid-template-columns:repeat(2,1fr)}
+}
+
+
+.pos-suggestions{margin-top:8px;background:#fff;color:#18212a;border-radius:10px;max-height:260px;overflow:auto;display:none}
+.pos-suggestions.show{display:block}
+.pos-suggestion{padding:10px 12px;border-bottom:1px solid #e5e9ee;cursor:pointer}
+.pos-suggestion:hover,.pos-suggestion.active{background:#eef6ff}
+.pos-suggestion b{display:block}
+.pos-code-help{font-size:12px;color:#c5d2dc;margin-top:6px}
+
+
+/* ERP 10.0.5 鍵盤操作焦點 */
+.keyboard-help{max-width:1500px;margin:8px auto 10px;padding:9px 14px;background:#fff7d6;border:1px solid #e7c64a;border-radius:10px;color:#5b4a00;font-size:14px}
+.keyboard-enabled :focus{outline:3px solid #ff9f0a!important;outline-offset:2px!important;box-shadow:0 0 0 5px rgba(255,159,10,.20)!important}
+.keyboard-enabled tbody tr[tabindex="0"]{cursor:pointer}
+.keyboard-enabled tbody tr[tabindex="0"]:focus{background:#fff1c2!important}
+@media(max-width:700px){.keyboard-help{margin:6px 8px;font-size:12px}}
+</style>
+
+<style>
+.product-search-wrap{position:relative}
+.product-results{position:absolute;left:0;right:0;top:100%;z-index:50;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 28px rgba(0,0,0,.15);max-height:280px;overflow:auto;margin-top:4px}
+.product-result{padding:10px 12px;border-bottom:1px solid var(--line);cursor:pointer}
+.product-result:last-child{border-bottom:0}
+.product-result:hover,.product-result.active{background:#f1f6ff}
+.product-result b{display:block}
+.price-summary{background:#f7f9fc;border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-top:10px}
+.price-summary-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.price-summary-grid div{background:#fff;border-radius:10px;padding:8px;text-align:center}
+.price-summary-grid small{display:block;color:var(--muted);margin-bottom:3px}
+@media(max-width:700px){.price-summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+
+<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
+<script src="js/app-01.js"></script>
+
+<style>
+.scanbar{display:grid;grid-template-columns:1fr auto auto;gap:8px}
+.scanbtn{background:#e7f5ec;color:#1b7f45;font-weight:800;white-space:nowrap}
+#barcodeScannerDialog{max-width:560px}
+#qr-reader{width:100%;min-height:280px;background:#111;border-radius:14px;overflow:hidden}
+.scan-note{font-size:13px;color:var(--muted);line-height:1.55;margin-top:10px}
+@media(max-width:560px){
+  .scanbar{grid-template-columns:1fr auto}
+  .scanbar .search-submit{grid-column:1/-1}
+  .scanbtn{padding-left:10px;padding-right:10px}
+}
+</style>
+
+
+<style>
+/* ERP 8.4 智慧採購 */
+.purchase84-layout{display:grid;grid-template-columns:minmax(340px,1fr) minmax(440px,1.25fr);gap:12px}
+.purchase84-results{border:1px solid var(--line);border-radius:12px;max-height:260px;overflow:auto;margin-top:7px;background:#fff}
+.purchase84-result{padding:10px 12px;border-bottom:1px solid var(--line);cursor:pointer}
+.purchase84-result:hover{background:#eef6ff}.purchase84-result:last-child{border-bottom:0}
+.purchase84-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0}
+.purchase84-summary>div{background:#f7f9fc;border:1px solid #edf0f4;border-radius:11px;padding:10px;text-align:center}
+.purchase84-summary small{display:block;color:var(--muted)}
+.purchase84-status{font-weight:800}.purchase84-status.draft{color:#667085}.purchase84-status.ordered{color:#0b4d8c}.purchase84-status.partial{color:#a66b00}.purchase84-status.done{color:#1b7f45}.purchase84-status.cancelled{color:#c62828}
+@media(max-width:900px){.purchase84-layout{grid-template-columns:1fr}.purchase84-summary{grid-template-columns:repeat(2,1fr)}}
+</style>
+
+<style id="erp90-style">
+.erp90-workspace{display:grid;grid-template-columns:minmax(430px,1.35fr) minmax(340px,.95fr);gap:14px;align-items:start}
+.erp90-toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.erp90-toolbar input,.erp90-toolbar select{min-width:150px;flex:1}
+.erp90-table-wrap{max-height:68vh;overflow:auto;border:1px solid var(--line);border-radius:10px}
+.erp90-table{width:100%;border-collapse:collapse;background:#fff}
+.erp90-table th{position:sticky;top:0;background:#f3f6f8;z-index:2;text-align:left;padding:9px;border-bottom:1px solid var(--line)}
+.erp90-table td{padding:9px;border-bottom:1px solid var(--line);vertical-align:top}
+.erp90-table tr{cursor:pointer}.erp90-table tbody tr:hover{background:#f7fbff}.erp90-table tr.selected{background:#e9f4ff}
+.erp90-editor{position:sticky;top:10px}.erp90-editor .formrow{margin-bottom:8px}
+.erp90-empty{padding:28px;text-align:center;color:var(--muted)}
+.erp90-hint{font-size:12px;color:var(--muted);margin:4px 0 10px}
+@media(max-width:980px){.erp90-workspace{grid-template-columns:1fr}.erp90-editor{position:static}.erp90-table-wrap{max-height:52vh}}
+</style>
+
+<style id="erp1005-fixed-layout">
+/* ERP 10.0.5 固定式整頁工作區：桌機固定標題、左側選單、資料區獨立捲動 */
+:root{--erp-header-h:72px;--erp-sidebar-w:220px;--erp-banner-h:60px}
+@media (min-width:1000px){
+  html,body{height:100%;overflow:hidden}
+  body{background:#e9eef5}
+  header{position:fixed;left:0;right:0;top:0;height:var(--erp-header-h);z-index:100;padding:12px 18px}
+  header .head{max-width:none;height:100%;margin:0}
+  main{position:fixed;inset:var(--erp-header-h) 0 0 0;max-width:none;margin:0;padding:0;height:auto}
+  .nav{position:fixed;left:0;top:var(--erp-header-h);bottom:0;width:var(--erp-sidebar-w);z-index:80;margin:0;padding:10px;background:#fff;border-right:1px solid var(--line);box-shadow:4px 0 16px #17203312;display:flex;flex-direction:column;gap:6px;overflow-y:auto;overflow-x:hidden}
+  .nav button{width:100%;min-height:42px;text-align:left;border-radius:9px;padding:9px 12px;flex:0 0 auto}
+  .nav button.active{position:sticky;top:0;z-index:2;box-shadow:0 3px 10px #0b4d8c33}
+  #erp10DataBanner{position:fixed;left:var(--erp-sidebar-w);right:0;top:var(--erp-header-h);z-index:70;max-width:none!important;height:var(--erp-banner-h);margin:0!important;border-radius:0!important;padding:8px 18px!important;border-bottom:1px solid #cbdced;overflow:auto;white-space:nowrap;flex-wrap:nowrap!important}
+  .panel{position:fixed;left:var(--erp-sidebar-w);right:0;top:calc(var(--erp-header-h) + var(--erp-banner-h));bottom:0;overflow:auto;padding:14px 18px 34px;scrollbar-gutter:stable;background:var(--bg)}
+  .panel.hidden{display:none}
+  .panel>.card:first-child{margin-top:0}
+  .keyboard-help{position:fixed;z-index:105;right:18px;bottom:12px;max-width:620px;margin:0;box-shadow:0 5px 20px #0002;opacity:.96}
+  .erp90-workspace{grid-template-columns:minmax(560px,1.45fr) minmax(390px,.9fr);height:calc(100vh - var(--erp-header-h) - var(--erp-banner-h) - 105px);min-height:520px;align-items:stretch}
+  .erp90-workspace>div:first-child{display:flex;flex-direction:column;min-height:0}
+  .erp90-table-wrap{max-height:none!important;min-height:0;flex:1;overflow:auto}
+  .erp90-editor{position:static!important;height:100%;overflow:auto;margin:0!important}
+  .pos-layout{grid-template-columns:minmax(360px,430px) minmax(650px,1fr);min-height:calc(100vh - var(--erp-header-h) - var(--erp-banner-h) - 120px)}
+  .pos-screen,.pos-cart{height:100%}
+  .pos-cart{overflow:auto}
+  .card{border-radius:12px}
+  dialog{max-height:90vh;overflow:auto}
+}
+@media (min-width:1500px){
+  :root{--erp-sidebar-w:245px}
+  .panel{padding-left:22px;padding-right:22px}
+  .erp90-workspace{grid-template-columns:minmax(720px,1.65fr) minmax(430px,.85fr)}
+}
+@media (max-width:999px){
+  html,body{height:auto;overflow:auto}
+  header{position:sticky}
+  main{max-width:100%;padding:10px}
+  #erp10DataBanner{max-width:none!important}
+  .panel{position:static;overflow:visible;padding:0}
+}
+</style>
+</head>
+<body>
+<header><div class="head"><div><h1>🔧 雙發水電五金｜ERP 10.0 Professional</h1><div class="sub">獨立查詢工作台｜客戶、廠商、商品可直接修改｜POS 三X聯與多元付款</div></div><div style="display:flex;gap:8px;align-items:center"><span id="netStatus" class="badge" style="background:#e7f5ec;color:#1b7f45">連線中</span><button class="secondary hide-mobile" onclick="erpToggleFullscreen()">全螢幕</button><button class="secondary hide-mobile" onclick="showPanel('backup')">備份資料</button></div></div></header>
+<main>
+<nav class="nav no-print">
+<button class="active" data-panel="pos">POS 收銀</button><button data-panel="dashboard">首頁</button><button data-panel="productLookup90">商品查詢</button><button data-panel="customerLookup90">客戶查詢</button><button data-panel="supplierLookup90">廠商查詢</button><button data-panel="products">商品</button><button data-panel="stockin">廠商進貨</button><button data-panel="sales">客戶銷貨</button><button data-panel="returns">廠商退貨</button><button data-panel="customerReturn">客戶退貨</button><button data-panel="supplierInRecords">廠商進貨紀錄</button><button data-panel="supplierReturnRecords">廠商退貨紀錄</button><button data-panel="customerSaleRecords">客戶銷貨紀錄</button><button data-panel="customerReturnRecords">客戶退貨紀錄</button><button data-panel="inventory">庫存</button><button data-panel="customers">客戶資料</button><button data-panel="suppliers">廠商資料</button><button data-panel="quotes">估價單</button><button data-panel="purchase84">智慧採購</button><button data-panel="database70">7.0資料庫</button><button data-panel="dailyClose10">每日結帳</button><button data-panel="backup">設定</button>
+</nav>
+<div id="erp10DataBanner" style="max-width:1600px;margin:10px auto 0;padding:10px 14px;border-radius:12px;background:#eef6ff;color:#174a7e;font-weight:700;display:flex;gap:18px;flex-wrap:wrap;align-items:center">
+  <span>ERP 10.0 資料檢查：</span><span id="erp10ProductCount">商品讀取中</span><span id="erp10CustomerCount">客戶讀取中</span><span id="erp10SupplierCount">廠商讀取中</span>
+  <button class="secondary" onclick="erp10RepairAndRefresh()">修復並重新載入資料</button>
+</div>
+
+
+<section id="dailyClose10" class="panel hidden">
+  <div class="card">
+    <h2 style="margin-top:0">🧾 POS／進銷存每日結帳</h2>
+    <p class="notice">每日營業結束後，核對 POS 各付款方式、進貨與退貨、庫存異動及現金差額，再儲存日結紀錄。</p>
+    <div class="formrow">
+      <div><label>結帳日期</label><input id="dc10Date" type="date" onchange="dc10Render()"></div>
+      <div><label>開店現金</label><input id="dc10OpeningCash" type="number" min="0" step="1" value="0" oninput="dc10RenderSummary()"></div>
+      <div><label>實際盤點現金</label><input id="dc10CountedCash" type="number" min="0" step="1" value="0" oninput="dc10RenderSummary()"></div>
+      <div><label>其他現金收入／支出</label><input id="dc10Adjustment" type="number" step="1" value="0" oninput="dc10RenderSummary()" placeholder="收入填正數、支出填負數"></div>
+    </div>
+    <div class="actions">
+      <button class="primary" onclick="dc10Render()">重新計算</button>
+      <button class="success" onclick="dc10Save()">儲存日結</button>
+      <button class="secondary" onclick="dc10PrintCurrent()">列印日結表</button>
+    </div>
+  </div>
+
+  <div class="grid4" style="margin-top:12px">
+    <div class="card"><div class="kpi-title">POS 銷售總額</div><div class="big" id="dc10SalesTotal">$0</div></div>
+    <div class="card"><div class="kpi-title">進貨總額</div><div class="big" id="dc10PurchaseTotal">$0</div></div>
+    <div class="card"><div class="kpi-title">預計現金</div><div class="big" id="dc10ExpectedCash">$0</div></div>
+    <div class="card"><div class="kpi-title">現金差額</div><div class="big" id="dc10CashDiff">$0</div></div>
+  </div>
+
+  <div class="grid2" style="margin-top:12px">
+    <div class="card">
+      <h3 style="margin-top:0">付款方式彙總</h3>
+      <div id="dc10PaymentTable"></div>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">進銷存異動彙總</h3>
+      <div id="dc10MovementTable"></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h3 style="margin-top:0">今日明細</h3>
+    <div id="dc10DetailTable" style="overflow:auto;max-height:420px"></div>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h3 style="margin-top:0">已儲存日結紀錄</h3>
+    <div id="dc10History"></div>
+  </div>
+</section>
+
+<section id="productLookup90" class="panel hidden">
+ <div class="card"><h2 style="margin-top:0">🔎 商品獨立查詢</h2><div class="erp90-hint">輸入型號、品名、商品編號或條碼；點選或雙擊資料即可進入右側修改。</div>
+ <div class="erp90-workspace"><div>
+  <div class="erp90-toolbar"><input id="p90q" placeholder="型號／品名／商品編號／條碼" oninput="erp90RenderProducts()"><select id="p90brand" onchange="erp90RenderProducts()"><option value="">全部品牌</option></select><select id="p90cat" onchange="erp90RenderProducts()"><option value="">全部分類</option></select><button class="primary" onclick="erp90RenderProducts()">查詢</button><button class="secondary" onclick="erp90NewProduct()">新增商品</button></div>
+  <div id="p90count" class="muted" style="margin-bottom:7px"></div><div id="p90list" class="erp90-table-wrap"></div>
+ </div><div class="card erp90-editor"><h3 id="p90title" style="margin-top:0">商品資料</h3><input type="hidden" id="p90idx">
+  <div class="formrow"><div><label>型號／品號</label><input id="p90id"></div><div><label>商品編號</label><input id="p90store"></div></div>
+  <label>品名／說明</label><input id="p90desc">
+  <div class="formrow"><div><label>品牌</label><input id="p90brandEdit"></div><div><label>分類</label><input id="p90catEdit"></div></div>
+  <div class="formrow"><div><label>通路／價目表</label><input id="p90channel"></div><div><label>條碼</label><input id="p90barcode"></div></div>
+  <div class="formrow"><div><label>廠商編號（可多個）</label><input id="p90supplierCodes" placeholder="例如：0001, 0018, 0052"></div><div><label>主供應廠商編號</label><input id="p90primarySupplier" placeholder="例如：0001"></div></div>
+  <p class="erp90-hint" style="margin-top:-2px">同一商品有多家廠商時，請用逗號分開；第一個可設為主供應廠商。</p>
+  <div class="formrow"><div><label>庫存</label><input id="p90stock" type="number"></div><div><label>建議售價</label><input id="p90suggested" type="number"></div></div>
+  <div class="formrow"><div><label>經銷價</label><input id="p90dealer" type="number"></div><div><label>直行價</label><input id="p90direct" type="number"></div></div>
+  <div class="actions"><button class="primary" onclick="erp90SaveProduct()">儲存修改</button><button class="secondary" onclick="erp90NewProduct()">清空／新增</button><button class="danger" onclick="erp90DeleteProduct()">刪除商品</button></div>
+ </div></div></div>
+</section>
+<section id="customerLookup90" class="panel hidden">
+ <div class="card"><h2 style="margin-top:0">🔎 客戶獨立查詢</h2><div class="erp90-hint">可查姓名、編號、電話、地址或備註；點選資料即可修改。</div>
+ <div class="erp90-workspace"><div><div class="erp90-toolbar"><input id="c90q" placeholder="客戶姓名／編號／電話／地址" oninput="erp90RenderCustomers()"><button class="primary" onclick="erp90RenderCustomers()">查詢</button><button class="secondary" onclick="erp90NewCustomer()">新增客戶</button></div><div id="c90count" class="muted" style="margin-bottom:7px"></div><div id="c90list" class="erp90-table-wrap"></div></div>
+ <div class="card erp90-editor"><h3 id="c90title" style="margin-top:0">客戶資料</h3><input type="hidden" id="c90id"><div class="formrow"><div><label>客戶編號</label><input id="c90code" maxlength="4"></div><div><label>客戶名稱</label><input id="c90name"></div></div><div class="formrow"><div><label>電話</label><input id="c90phone"></div><div><label>地址</label><input id="c90address"></div></div><div class="formrow"><div><label>價格類型</label><select id="c90price"><option value="suggested">建議售價</option><option value="wholesale">經銷價</option><option value="direct">直行價</option></select></div><div><label>折數公式</label><input id="c90discount" placeholder="例如 0.9"></div></div><label>備註</label><input id="c90note"><div class="actions"><button class="primary" onclick="erp90SaveCustomer()">儲存修改</button><button class="secondary" onclick="erp90NewCustomer()">清空／新增</button><button class="danger" onclick="erp90DeleteCustomer()">刪除客戶</button></div></div></div></div>
+</section>
+<section id="supplierLookup90" class="panel hidden">
+ <div class="card"><h2 style="margin-top:0">🔎 廠商獨立查詢</h2><div class="erp90-hint">可查廠商名稱、編號、聯絡人、電話、地址或備註；點選資料即可修改。</div>
+ <div class="erp90-workspace"><div><div class="erp90-toolbar"><input id="s90q" placeholder="廠商名稱／編號／聯絡人／電話" oninput="erp90RenderSuppliers()"><button class="primary" onclick="erp90RenderSuppliers()">查詢</button><button class="secondary" onclick="erp90NewSupplier()">新增廠商</button></div><div id="s90count" class="muted" style="margin-bottom:7px"></div><div id="s90list" class="erp90-table-wrap"></div></div>
+ <div class="card erp90-editor"><h3 id="s90title" style="margin-top:0">廠商資料</h3><input type="hidden" id="s90id"><div class="formrow"><div><label>廠商編號</label><input id="s90code" maxlength="4"></div><div><label>廠商名稱</label><input id="s90name"></div></div><div class="formrow"><div><label>聯絡人</label><input id="s90contact"></div><div><label>電話</label><input id="s90phone"></div></div><label>地址</label><input id="s90address"><label>備註</label><input id="s90note"><div class="actions"><button class="primary" onclick="erp90SaveSupplier()">儲存修改</button><button class="secondary" onclick="erp90NewSupplier()">清空／新增</button><button class="danger" onclick="erp90DeleteSupplier()">刪除廠商</button></div></div></div></div>
+</section>
+<section id="pos" class="panel">
+<div class="pos-layout">
+  <div class="card">
+    <h2 style="margin-top:0">🧾 雙發 POS 收銀 <small style="font-size:13px">7.0.0 Alpha 1</small></h2><p class="notice">7.0 第一個試作版：收銀先沿用目前商品資料，DBF 客戶與庫存資料分階段接入。</p>
+    <div class="pos-screen">
+      <div class="pos-qty-label">先輸入數量，再刷條碼；沒有輸入時預設 1</div>
+      <input id="posQty" class="pos-qty" value="1" inputmode="numeric" autocomplete="off" aria-label="POS 數量">
+      <div style="height:8px"></div>
+      <input id="posBarcode" class="pos-code" inputmode="text" autocomplete="off" placeholder="刷條碼／8碼／國際碼／型號／英文自編碼" oninput="posLiveLookup()" onkeydown="posBarcodeKeydown(event)">
+      <div id="posMessage" class="pos-message">準備收銀：可輸入8碼、國際條碼、型號或英文自編碼。8碼與國際碼輸入完整後會自動加入。</div><div class="pos-code-help">原始欄位：frpt_no＝8碼商品編號；fpt_no＝國際／自編條碼；fvpt_no＝英文注音頭碼＋型號；fvend1＝廠商代號</div><div class="notice" style="margin-top:7px">測試碼：31403108 應找到「逆止洩壓閥1/2銅0.8 MPA」並自動加入。</div><div id="posSuggestions" class="pos-suggestions"></div>
+      <div class="pos-keypad">
+        <button class="secondary" onclick="posKey('7')">7</button><button class="secondary" onclick="posKey('8')">8</button><button class="secondary" onclick="posKey('9')">9</button>
+        <button class="secondary" onclick="posKey('4')">4</button><button class="secondary" onclick="posKey('5')">5</button><button class="secondary" onclick="posKey('6')">6</button>
+        <button class="secondary" onclick="posKey('1')">1</button><button class="secondary" onclick="posKey('2')">2</button><button class="secondary" onclick="posKey('3')">3</button>
+        <button class="danger" onclick="posClearQty()">清除</button><button class="secondary" onclick="posKey('0')">0</button><button class="secondary" onclick="posBackspace()">⌫</button>
+        <button class="pos-scan" onclick="startBarcodeScanner('posBarcode')">📷 掃條碼並加入</button>
+      </div>
+    </div>
+    <h3>本次商品價格方式</h3>
+    <div class="pos-mode-grid">
+      <label>價格模式
+        <select id="posPriceMode" onchange="posUpdatePriceHint()">
+          <option value="default">系統預設售價</option>
+          <option value="listDiscount">牌價 × 折數</option>
+          <option value="marketPercent">時價 × %</option>
+          <option value="custom">直接自訂單價</option>
+        </select>
+      </label>
+      <label>折數／百分比
+        <input id="posRate" type="number" step="0.01" value="0.9" oninput="posUpdatePriceHint()">
+      </label>
+      <label>自訂單價
+        <input id="posCustomPrice" type="number" min="0" value="0">
+      </label>
+    </div>
+    <p id="posPriceHint" class="notice">系統預設售價：使用商品目前計算後末端售價。</p>
+  </div>
+
+  <div class="card pos-cart">
+    <div style="display:flex;justify-content:space-between;gap:12px;align-items:center">
+      <h2 style="margin:0">銷售明細</h2>
+      <div><button class="secondary" onclick="posHold()">暫存單</button> <button class="danger" onclick="posClearCart()">清空本單</button></div>
+    </div>
+    <table>
+      <thead><tr><th>商品</th><th>條碼／商品編號</th><th>數量</th><th>單價</th><th>小計</th><th></th></tr></thead>
+      <tbody id="posCartBody"><tr><td colspan="6" class="muted">尚未加入商品</td></tr></tbody>
+    </table>
+    <div style="display:flex;justify-content:space-between;align-items:end;margin-top:14px;gap:12px">
+      <div><span class="muted">品項數</span><div id="posItemCount" style="font-size:24px;font-weight:800">0</div></div>
+      <div><span class="muted">應收總計</span><div id="posTotal" class="pos-total">$0</div></div>
+    </div>
+    <h3>結帳方式與付款方式</h3>
+    <div class="pos-mode-grid" style="margin-bottom:12px">
+      <label>結帳選項
+        <select id="posTaxMode" onchange="renderPosCart()">
+          <option value="taxIncluded">一般</option>
+          <option value="taxExcluded">三X聯</option>
+        </select>
+      </label>
+      <div class="notice" style="margin:0">
+        <div>原售價合計：<b id="posGrossTotal">$0</b></div>
+        <div>扣除營業稅：<b id="posTaxTotal">$0</b></div>
+        <div>實收金額：<b id="posNetTotal">$0</b></div>
+        <div id="posInvoiceHint" style="margin-top:4px;font-weight:700">一般：照原售價結帳</div>
+      </div>
+    </div>
+    <div class="pos-payments">
+      <button class="success" onclick="posCheckout('現金')">F3 現金</button>
+      <button class="primary" onclick="posCheckout('信用卡')">F4 信用卡</button>
+      <button class="secondary" onclick="posCheckout('LINE Pay')">F5 LINE Pay</button>
+      <button class="secondary" onclick="posCheckout('街口支付')">F6 街口支付</button>
+      <button class="secondary" onclick="posCheckout('全支付')">F7 全支付</button>
+      <button class="secondary" onclick="posCheckout('匯款')">F8 匯款</button>
+      <button class="secondary" onclick="posCheckout('月結')">F9 月結</button>
+    </div>
+    <p class="notice">目前是試作版：結帳後會寫入銷貨紀錄並扣除庫存。正式取代舊 POS 前，請先用少量商品測試。</p>
+  </div>
+</div>
+</section>
+
+<section id="dashboard" class="panel hidden">
+<div class="grid4">
+<div class="card"><div class="kpi-title">商品總數</div><div class="big" id="kpiProducts">0</div></div>
+<div class="card"><div class="kpi-title">總庫存數量</div><div class="big" id="kpiStock">0</div></div>
+<div class="card"><div class="kpi-title">今日銷售含稅總額</div><div class="big" id="kpiSales">$0</div></div>
+<div class="card"><div class="kpi-title">今日預估毛利</div><div class="big" id="kpiProfit">$0</div></div>
+</div>
+<div class="grid2">
+ <div class="card" style="border-top:6px solid #a66b00">
+  <h2 style="margin-top:0">🏭 廠商儀表板</h2>
+  <div class="grid2">
+   <div class="metric"><small>廠商總數</small><b id="supplierDashCount">0</b></div>
+   <div class="metric"><small>今日進貨含稅總額</small><b id="supplierDashToday">$0</b></div>
+   <div class="metric"><small>本月進貨含稅總額</small><b id="supplierDashMonth">$0</b></div>
+   <div class="metric"><small>待到貨採購單</small><b id="supplierDashPending">0</b></div>
+  </div>
+  <h3>最近廠商進貨／退貨</h3><div id="supplierRecentLogs" class="list"></div>
+ </div>
+ <div class="card" style="border-top:6px solid #1976d2">
+  <h2 style="margin-top:0">👥 客戶儀表板</h2>
+  <div class="grid2">
+   <div class="metric"><small>客戶總數</small><b id="customerDashCount">0</b></div>
+   <div class="metric"><small>今日銷貨含稅總額</small><b id="customerDashToday">$0</b></div>
+   <div class="metric"><small>本月銷貨含稅總額</small><b id="customerDashMonth">$0</b></div>
+   <div class="metric"><small>未收款銷貨筆數</small><b id="customerDashUnpaid">0</b></div>
+  </div>
+  <h3>最近客戶銷貨／退貨</h3><div id="customerRecentLogs" class="list"></div>
+ </div>
+</div>
+<div class="grid2">
+ <div class="card"><h2 style="margin-top:0">⚠️ 低庫存商品</h2><div id="lowStock" class="list"></div></div>
+ <div class="card"><h2 style="margin-top:0">🧾 最近庫存異動</h2><div id="recentLogs" class="list"></div></div>
+</div>
+<div class="card">
+<h2>快速查價</h2>
+<div class="scanbar"><input id="quickSearch" placeholder="輸入商品編號、型號、條碼、廠商代號或自編碼"><button class="scanbtn" onclick="startBarcodeScanner('quickSearch')">📷 掃條碼</button><button class="primary search-submit" onclick="quickFind()">查詢</button></div>
+<div class="chips"><span class="chip" onclick="fast('1333')">1333</span><span class="chip" onclick="fast('1633')">1633</span><span class="chip" onclick="fast('1005')">1005</span><span class="chip" onclick="fast('7796')">櫻花 7796</span><span class="chip" onclick="fast('RUA')">林內 RUA</span><span class="chip" onclick="fast('TR-5195')">莊頭北 TR-5195</span></div>
+</div>
+</section>
+
+<section id="products" class="panel hidden">
+<div class="card">
+<div class="actions" style="margin-top:0;margin-bottom:12px">
+<button class="primary" onclick="toggleAddProduct()">＋新增商品</button>
+<label class="btn secondary" style="display:inline-block">匯入 CSV 商品檔<input type="file" accept=".csv,text/csv" onchange="importProductsCSV(event)" style="display:none"></label>
+<button class="secondary" onclick="exportProductsCSV()">匯出商品 CSV</button>
+</div>
+<div id="addProductBox" class="hidden" style="border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:12px">
+<h3 style="margin-top:0">新增自有商品</h3>
+<div class="formrow"><div><label>品牌</label><input id="newBrand" value="櫻花"></div><div><label>型號／品號</label><input id="newModel"></div></div>
+<div class="formrow"><div><label>分類</label><input id="newCategory" placeholder="例如：熱水器、五金工具"></div><div><label>通路／供應商</label><input id="newChannel" value="店內自有商品"></div></div>
+<label>產品名稱／說明</label><input id="newDescription">
+<div class="formrow"><div><label>建議售價</label><input id="newSuggested" type="number" min="0"></div><div><label>經銷價／進貨價</label><input id="newDealer" type="number" min="0"></div></div>
+<div class="formrow"><div><label>建議批價（沒有可留空）</label><input id="newWholesale" type="number" min="0"></div><div><label>目前庫存</label><input id="newStock" type="number" min="0" value="0"></div></div>
+<label>尺寸／規格</label><textarea id="newSpecs" rows="3" placeholder="例如：寬 900 × 深 500 × 高 540 mm"></textarea>
+<label style="display:flex;align-items:center;gap:8px;color:var(--text)"><input id="newDirect" type="checkbox" style="width:auto"> 直行價商品</label>
+<div class="actions"><button class="primary" onclick="addCustomProduct()">儲存商品</button><button class="secondary" onclick="toggleAddProduct()">取消</button></div>
+</div>
+<h2 style="margin:0 0 10px">商品資料查詢</h2><div class="scanbar"><input id="productSearch" placeholder="輸入商品編號、品名、型號、條碼、廠商代號或自編碼" oninput="renderProducts()" onkeydown="if(event.key==='Enter')renderProducts()"><button class="scanbtn" onclick="startBarcodeScanner('productSearch')">📷 掃條碼</button><button class="primary search-submit" onclick="renderProducts()">搜尋</button></div>
+<div class="grid4">
+<div><label>品牌</label><select id="brandFilter" onchange="renderProducts()"><option value="">全部品牌</option><option>櫻花</option><option>林內</option><option>莊頭北</option><option>喜特麗JTL</option></select></div>
+<div><label>分類</label><select id="categoryFilter" onchange="renderProducts()"><option value="">全部分類</option></select></div>
+<div><label>通路</label><select id="channelFilter" onchange="renderProducts()"><option value="">全部通路</option></select></div>
+<div><label>顯示</label><select id="stockFilter" onchange="renderProducts()"><option value="">全部商品</option><option value="stock">有庫存</option><option value="low">低庫存</option></select></div>
+</div>
+<div class="muted" id="productSearchCount" style="margin:8px 0"></div><div id="productList" class="list"></div>
+</div>
+</section>
+
+
+<section id="stockin" class="panel hidden">
+<div class="card"><h2>新增進貨</h2>
+
+<label>1．廠商</label>
+<select id="supplier"></select>
+
+<label>2．品項搜尋</label>
+<div class="formrow">
+<div>
+<label>商品類別</label>
+<select id="inCategory" onchange="updateInOptionFields(); clearInSelection();">
+<option value="">請選擇品項</option>
+<option value="瓦斯爐">瓦斯爐</option>
+<option value="熱水器">熱水器</option>
+<option value="排油煙機">油煙機</option>
+</select>
+</div>
+<div id="inGasWrap" class="hidden">
+<label>瓦斯種類</label>
+<select id="inGasType" onchange="searchProductInput('in')">
+<option value="">請選擇</option>
+<option value="NG1">天然瓦斯 NG1</option>
+<option value="LPG">液化瓦斯 LPG</option>
+</select>
+</div>
+<div id="inHoodWrap" class="hidden">
+<label>油煙機尺寸</label>
+<select id="inHoodSize" onchange="searchProductInput('in')">
+<option value="">全部尺寸</option>
+<option value="70">70 CM</option>
+<option value="80">80 CM</option>
+<option value="90">90 CM</option>
+</select>
+</div>
+</div>
+<div class="product-search-wrap">
+<input id="inSearch" autocomplete="off" placeholder="輸入型號、數字或商品名稱，例如：1603、1633、2965" oninput="searchProductInput('in')" onfocus="searchProductInput('in')">
+<div id="inResults" class="product-results hidden"></div>
+</div>
+<select id="inProduct" class="hidden" onchange="updateInDefaults()"></select>
+<div id="inSelectedInfo" class="notice">尚未選擇商品</div><div id="inBrandPriceNote" class="notice hidden">此廠牌不顯示經銷價、建議售價、直行價，只使用實際進貨單價。</div>
+
+<div class="formrow">
+<div><label>3．數量</label><input id="inQty" type="number" min="1" value="1" oninput="updateInSummary()"></div>
+<div id="inBrandPriceOptions">
+<label>進貨項目</label>
+<div style="display:flex;gap:12px;align-items:center;min-height:46px;padding:0 4px">
+<label style="margin:0;display:flex;align-items:center;gap:6px;color:var(--text)"><input type="radio" name="inPriceType" value="dealer" checked onchange="selectInPriceType()" style="width:auto"> 經銷價</label>
+<label style="margin:0;display:flex;align-items:center;gap:6px;color:var(--text)"><input type="radio" name="inPriceType" value="direct" onchange="selectInPriceType()" style="width:auto"> 直行價</label>
+</div>
+<input id="inPriceType" type="hidden" value="dealer">
+</div>
+</div>
+
+<div class="formrow">
+<div><label>4．成本單價</label><input id="inBaseCost" type="number" readonly></div>
+<div><label>計價基準單價</label><input id="inListPrice" type="number" readonly></div>
+</div>
+
+<div class="formrow">
+<div><label>折數公式（例：0.92*0.95*0.95 或 92*95*95）</label><input id="inDiscount" value="0.92*0.95*0.95" inputmode="decimal" oninput="updateInPrice()"></div>
+<div><label>5．成交單價（可手動修改）</label><input id="inCost" type="number" min="0" inputmode="decimal" oninput="updateInSummary(true)"></div>
+</div>
+
+<div class="price-summary"><div class="price-summary-grid">
+<div><small>直行價</small><b id="inSuggested">$0</b></div>
+<div><small>經銷價</small><b id="inDealerPrice">$0</b></div>
+<div><small>系統成本</small><b id="inSystemCost">$0</b></div>
+<div><small>折數公式</small><b id="inDiscountView">—</b></div>
+<div><small>成交價</small><b id="inDealView">$0</b></div>
+<div><small>進貨小計</small><b id="inSubtotalView">$0</b></div>
+<div><small>與系統成本差額</small><b id="inVariance">$0</b></div>
+<div><small>目前庫存</small><b id="inStock">0</b></div>
+</div></div>
+
+<div class="formrow">
+<div><label>稅別</label><select id="inTaxMode" onchange="updateInSummary()"><option value="taxIncluded">含稅（輸入單價已含 5% 稅）</option><option value="taxExcluded">未稅（結帳另加 5%）</option><option value="noTax">免稅／不計稅</option></select></div>
+<div><label>付款方式</label><select id="inPayment"><option>現金</option><option>轉帳</option><option>信用卡</option><option>月結</option><option>未付款</option></select></div>
+</div>
+<div class="price-summary"><div class="price-summary-grid">
+<div><small>未稅金額</small><b id="inNetView">$0</b></div><div><small>稅金 5%</small><b id="inTaxView">$0</b></div><div><small>含稅總額</small><b id="inGrossView">$0</b></div><div><small>日期</small><input id="inDate" type="date" style="padding:6px"></div>
+</div></div>
+
+<label>運費／其他費用</label>
+<input id="inExtraFee" type="number" min="0" value="0" oninput="updateInSummary(true)">
+<input id="inSubtotal" type="hidden" value="0">
+<label>備註</label>
+<input id="inNote" placeholder="例如：福利案、贈品、批次">
+<button class="primary" style="width:100%;margin-top:12px" onclick="stockIn()">儲存進貨</button>
+</div>
+</section>
+
+<section id="sales" class="panel hidden">
+<div class="card"><h2>新增銷貨</h2>
+
+<label>1．客戶</label>
+<select id="saleCustomer" onchange="applyCustomerDefaults()"></select>
+
+<label>2．品項搜尋</label>
+<div class="formrow">
+<div>
+<label>商品類別</label>
+<select id="saleCategory" onchange="updateSaleOptionFields(); clearSaleSelection();">
+<option value="">請選擇品項</option>
+<option value="瓦斯爐">瓦斯爐</option>
+<option value="熱水器">熱水器</option>
+<option value="排油煙機">油煙機</option>
+</select>
+</div>
+<div id="saleGasWrap" class="hidden">
+<label>瓦斯種類</label>
+<select id="saleGasType" onchange="searchProductInput('sale')">
+<option value="">請選擇</option>
+<option value="NG1">天然瓦斯 NG1</option>
+<option value="LPG">液化瓦斯 LPG</option>
+</select>
+</div>
+<div id="saleHoodWrap" class="hidden">
+<label>油煙機尺寸</label>
+<select id="saleHoodSize" onchange="searchProductInput('sale')">
+<option value="">全部尺寸</option>
+<option value="70">70 CM</option>
+<option value="80">80 CM</option>
+<option value="90">90 CM</option>
+</select>
+</div>
+</div>
+<div class="product-search-wrap">
+<input id="saleSearch" autocomplete="off" placeholder="輸入編號或型號後才顯示品項，例如：1603、1333、2965" oninput="searchProductInput('sale')" onfocus="searchProductInput('sale')">
+<div id="saleResults" class="product-results hidden"></div>
+</div>
+<select id="saleProduct" class="hidden" onchange="updateSaleDefaults()"></select>
+<div id="saleSelectedInfo" class="notice">請先輸入商品編號或型號</div><div id="saleBrandPriceNote" class="notice hidden">非櫻花、林內、莊頭北、喜特麗、豪山商品，不顯示建議售價、經銷價、直行價選項；請直接輸入實際成交單價。</div>
+
+<div class="formrow">
+<div><label>3．數量</label><input id="saleQty" type="number" min="1" value="1" oninput="updateSaleSummary()"></div>
+<div id="saleBrandPriceOptions">
+<label>銷售項目</label>
+<div style="display:flex;gap:12px;align-items:center;min-height:46px;padding:0 4px;flex-wrap:wrap">
+<label style="margin:0;display:flex;align-items:center;gap:6px;color:var(--text)"><input type="radio" name="salePriceType" value="end" checked onchange="selectSalePriceType()" style="width:auto"> 建議售價</label>
+<label style="margin:0;display:flex;align-items:center;gap:6px;color:var(--text)"><input type="radio" name="salePriceType" value="wholesale" onchange="selectSalePriceType()" style="width:auto"> 經銷價</label>
+<label style="margin:0;display:flex;align-items:center;gap:6px;color:var(--text)"><input type="radio" name="salePriceType" value="direct" onchange="selectSalePriceType()" style="width:auto"> 直行價</label>
+</div>
+<input id="salePriceType" type="hidden" value="end">
+</div>
+</div>
+<div id="saleDirectWarning" class="hidden" style="margin:8px 0 12px;padding:12px 14px;border:2px solid #dc2626;border-radius:10px;background:#fef2f2;color:#b91c1c;font-weight:800;font-size:16px;line-height:1.5">⚠ 注意：目前選擇「直行價」，成交單價固定為建議售價 × 90%，不可再另外打折。</div>
+
+<div class="formrow">
+<div><label>4．成本單價</label><input id="saleCost" type="number" readonly></div>
+<div><label id="saleListPriceLabel">未打折前：建議售價</label><input id="saleListPrice" type="number" readonly></div>
+</div>
+
+<div class="formrow">
+<div><label>折數公式（例：0.9、0.92*0.95*0.95 或 90*95*95）</label><input id="saleDiscount" value="1" inputmode="decimal" oninput="updateSalePrice()"></div>
+<div><label>5．成交單價（可手動修改）</label><input id="salePrice" type="number" min="0" inputmode="decimal" oninput="updateSaleSummary(true)"></div>
+</div>
+
+<div class="price-summary"><div class="price-summary-grid">
+<div><small>建議售價</small><b id="saleSuggested">$0</b></div>
+<div><small>經銷價</small><b id="saleDealerPrice">$0</b></div>
+<div><small>直行價</small><b id="saleDirectPrice">$0</b></div>
+<div><small>成本</small><b id="saleCostView">$0</b></div>
+<div><small>折數公式</small><b id="saleDiscountView">—</b></div>
+<div><small>成交價</small><b id="saleDealView">$0</b></div>
+<div><small>銷售小計（數量 × 成交單價）</small><b id="saleSubtotal">$0</b></div>
+<div><small>應收總額（含安裝／材料費）</small><b id="saleTotalDue">$0</b></div>
+<div><small>預估毛利</small><b id="saleProfit">$0</b></div>
+<div><small>毛利率／庫存</small><b><span id="saleMargin">0%</span>／<span id="saleStock">0</span></b></div>
+</div></div>
+
+<div class="formrow">
+<div><label>稅別</label><select id="saleTaxMode" onchange="renderSaleCart();updateSaleSummary(true)"><option value="taxIncluded">含稅（輸入售價已含 5% 稅）</option><option value="taxExcluded">未稅（結帳另加 5%）</option><option value="noTax">免稅／不計稅</option></select></div>
+<div><label>付款方式</label><select id="payment"><option>現金</option><option>轉帳</option><option>信用卡</option><option>LINE Pay</option><option>未收款</option></select></div>
+</div>
+<div class="price-summary"><div class="price-summary-grid">
+<div><small>未稅小計</small><b id="saleNetView">$0</b></div><div><small>稅金 5%</small><b id="saleTaxView">$0</b></div><div><small>含稅總額</small><b id="saleGrossView">$0</b></div><div><small>日期</small><input id="saleDate" type="date" style="padding:6px"></div>
+</div></div>
+
+<label>安裝費／材料費</label>
+<input id="extraFee" type="number" min="0" value="0" oninput="updateSaleSummary(true);renderSaleCart()">
+<label>備註</label>
+<input id="saleNote" placeholder="地址、安裝內容等">
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
+<button class="primary" style="flex:1;min-width:180px" onclick="addSaleItem()">＋ 加入銷貨明細</button>
+<button class="secondary" style="min-width:140px" onclick="clearSaleCart()">清空明細</button>
+</div>
+<div class="card" style="margin-top:14px;background:#f8fafc">
+<h3 style="margin-top:0">本次銷貨明細</h3>
+<div class="scroll" id="saleCartTable">尚未加入商品</div>
+<div style="display:flex;justify-content:flex-end;margin-top:12px;font-size:20px;font-weight:800">合計：<span id="saleCartGrandTotal" style="margin-left:8px">$0</span></div>
+<button class="success" style="width:100%;margin-top:12px" onclick="finalizeSale()">完成銷貨並列印出貨單</button>
+</div>
+</div>
+</section>
+
+<section id="records" class="panel hidden">
+<div class="card">
+<h2>進銷貨紀錄</h2>
+<div class="grid4">
+<div><label>紀錄類型</label><select id="recordType" onchange="renderRecords()"><option value="">全部</option><option value="進貨">進貨</option><option value="銷貨">銷貨</option></select></div>
+<div><label>開始日期</label><input id="recordDateFrom" type="date" onchange="renderRecords()"></div>
+<div><label>結束日期</label><input id="recordDateTo" type="date" onchange="renderRecords()"></div>
+<div><label>搜尋</label><input id="recordKeyword" placeholder="單號、客戶、廠商、型號、品名" oninput="renderRecords()"></div>
+</div>
+<div class="actions" style="margin-top:12px">
+<button class="secondary" onclick="setRecordRange('today')">今天</button>
+<button class="secondary" onclick="setRecordRange('month')">本月</button>
+<button class="secondary" onclick="setRecordRange('all')">全部日期</button>
+<button class="primary" onclick="printRecords()">列印目前紀錄</button>
+</div>
+<div class="price-summary" style="margin-top:12px"><div class="price-summary-grid">
+<div><small>進貨筆數</small><b id="recordInCount">0</b></div>
+<div><small>進貨總額</small><b id="recordInTotal">$0</b></div>
+<div><small>銷貨單數</small><b id="recordSaleCount">0</b></div>
+<div><small>銷貨總額</small><b id="recordSaleTotal">$0</b></div>
+</div></div>
+<div class="scroll" id="recordTable" style="margin-top:12px"></div>
+</div>
+</section>
+
+<section id="returns" class="panel hidden">
+<div class="card">
+<h2>辦理進退貨</h2>
+<p class="notice">此處專門記錄「向供應商退回進貨商品」，完成後會扣除庫存，並與進貨、銷貨紀錄分開保存。</p>
+<div class="grid4">
+<div><label>退貨日期</label><input id="returnDate" type="date"></div>
+<div><label>供應商</label><select id="returnSupplier"></select></div>
+<div><label>商品</label><select id="returnProduct" onchange="updateReturnDefaults()"></select></div>
+<div><label>退貨數量</label><input id="returnQty" type="number" min="1" value="1"></div>
+</div>
+<div class="formrow">
+<div><label>退貨單價</label><input id="returnUnit" type="number" min="0" value="0"></div>
+<div><label>退款／沖帳方式</label><select id="returnPayment"><option>現金退款</option><option>轉帳退款</option><option>貨款沖帳</option><option>換貨</option><option>其他</option></select></div>
+</div>
+<label>退貨原因／備註</label><input id="returnNote" placeholder="例如：瑕疵、規格不符、訂錯型號">
+<button class="danger" style="width:100%;margin-top:12px" onclick="stockReturn()">確認進退貨並扣除庫存</button>
+</div>
+<div class="card hidden">
+<h2>廠商退貨紀錄（請由上方獨立選單查詢）</h2>
+<div class="grid4">
+<div><label>開始日期</label><input id="returnDateFrom" type="date" onchange="renderReturnRecords()"></div>
+<div><label>結束日期</label><input id="returnDateTo" type="date" onchange="renderReturnRecords()"></div>
+<div style="grid-column:span 2"><label>搜尋</label><input id="returnKeyword" placeholder="退貨單號、供應商、型號、品名、備註" oninput="renderReturnRecords()"></div>
+</div>
+<div class="actions" style="margin-top:12px">
+<button class="secondary" onclick="setReturnRange('today')">今天</button>
+<button class="secondary" onclick="setReturnRange('month')">本月</button>
+<button class="secondary" onclick="setReturnRange('all')">全部日期</button>
+<button class="primary" onclick="printReturnRecords()">列印進退貨紀錄</button>
+</div>
+<div class="price-summary" style="margin-top:12px"><div class="price-summary-grid">
+<div><small>退貨筆數</small><b id="returnRecordCount">0</b></div>
+<div><small>退貨總台數</small><b id="returnRecordQty">0</b></div>
+<div><small>退貨總額</small><b id="returnRecordTotal">$0</b></div>
+<div><small>目前篩選</small><b>進退貨</b></div>
+</div></div>
+<div class="scroll" id="returnRecordTable" style="margin-top:12px"></div>
+</div>
+</section>
+
+<section id="inventory" class="panel hidden">
+<div class="card"><h2>庫存總覽</h2><div class="scroll" id="inventoryTable"></div></div>
+</section>
+
+<section id="customers" class="panel hidden">
+<div class="card"><h2>新增客戶</h2>
+<div class="formrow"><div><label>客戶編號（4位數）</label><input id="custCode" maxlength="4" inputmode="numeric" placeholder="自動產生"></div><div><label>姓名</label><input id="custName"></div></div><div class="formrow"><div><label>電話</label><input id="custPhone"></div><div><label>地址</label><input id="custAddress"></div></div>
+<div class="formrow">
+<div><label>預設銷售項目</label><select id="custPriceType"><option value="end">建議售價</option><option value="wholesale">經銷價</option><option value="direct">直行價</option></select></div>
+<div><label>預設折數公式</label><input id="custDiscount" value="1" placeholder="例如 0.92*0.95*0.95"></div>
+</div>
+<label>成交價進位方式</label><select id="custRoundMode"><option value="none">不進位</option><option value="ceil50">50 元進位</option><option value="ceil100">100 元進位</option></select>
+<p class="notice">例如折扣後為 1,120 元：50 元進位會變 1,150；1,180 元會變 1,200；1,020 元會變 1,050。不進位則保留原金額。</p>
+<label>備註</label><input id="custNote">
+<button class="primary" style="width:100%;margin-top:12px" onclick="addCustomer()">新增客戶</button></div>
+<div class="card"><h2>客戶資料查詢</h2>
+<div class="scanbar"><input id="customerSearch" placeholder="輸入客戶編號、姓名、電話、地址或備註" oninput="renderCustomers()" onkeydown="if(event.key==='Enter')renderCustomers()"><button class="primary search-submit" onclick="renderCustomers()">查詢</button><button class="secondary" onclick="customerSearch.value='';renderCustomers()">清除</button></div>
+<div class="muted" id="customerSearchCount" style="margin:8px 0"></div><div id="customerList"></div></div>
+</section>
+
+
+<section id="suppliers" class="panel hidden">
+<div class="card"><h2>新增廠商資料</h2>
+<div class="formrow"><div><label>廠商編號（4位數）</label><input id="supplierCode" maxlength="4" inputmode="numeric" placeholder="自動產生"></div><div><label>廠商名稱</label><input id="supplierName"></div></div>
+<div class="formrow"><div><label>聯絡人</label><input id="supplierContact"></div><div><label>電話</label><input id="supplierPhone"></div></div>
+<label>地址</label><input id="supplierAddress"><label>備註</label><input id="supplierNote">
+<button class="primary" style="width:100%;margin-top:12px" onclick="addSupplier()">新增廠商</button></div>
+<div class="card"><h2>廠商資料查詢</h2>
+<div class="scanbar"><input id="supplierSearch" placeholder="輸入廠商編號、名稱、聯絡人、電話、地址或備註" oninput="renderSuppliers()" onkeydown="if(event.key==='Enter')renderSuppliers()"><button class="primary search-submit" onclick="renderSuppliers()">查詢</button><button class="secondary" onclick="supplierSearch.value='';renderSuppliers()">清除</button></div>
+<div class="muted" id="supplierSearchCount" style="margin:8px 0"></div><div id="supplierList"></div></div>
+</section>
+
+<section id="customerReturn" class="panel hidden">
+<div class="card"><h2>新增客戶退貨</h2>
+<div class="formrow"><div><label>客戶</label><select id="customerReturnCustomer"></select></div><div><label>日期</label><input id="customerReturnDate" type="date"></div></div>
+<label>退貨商品</label><select id="customerReturnProduct" onchange="updateCustomerReturnDefaults()"></select>
+<div class="formrow"><div><label>退貨數量</label><input id="customerReturnQty" type="number" min="1" value="1"></div><div><label>退款單價</label><input id="customerReturnUnit" type="number" min="0"></div></div>
+<div class="formrow"><div><label>退款方式</label><select id="customerReturnPayment"><option>現金退款</option><option>轉帳退款</option><option>刷退</option><option>折讓／沖帳</option><option>換貨</option></select></div><div><label style="display:flex;align-items:center;gap:8px;color:var(--text);margin-top:28px"><input id="customerReturnRestock" type="checkbox" checked style="width:auto"> 良品退回庫存</label></div></div>
+<label>退貨原因／備註</label><input id="customerReturnNote" placeholder="例如：規格不合、商品瑕疵、換貨">
+<button class="primary" style="width:100%;margin-top:12px" onclick="saveCustomerReturn()">儲存客戶退貨</button></div>
+</section>
+
+<section id="supplierInRecords" class="panel hidden"><div class="card"><h2>廠商進貨紀錄</h2><div id="supplierInRecordTable"></div></div></section>
+<section id="supplierReturnRecords" class="panel hidden"><div class="card"><h2>廠商退貨紀錄</h2><div id="supplierReturnRecordTable"></div></div></section>
+<section id="customerSaleRecords" class="panel hidden"><div class="card"><h2>客戶銷貨紀錄</h2><div id="customerSaleRecordTable"></div></div></section>
+<section id="customerReturnRecords" class="panel hidden"><div class="card"><h2>客戶退貨紀錄</h2><div id="customerReturnRecordTable"></div></div></section>
+
+
+<section id="quotes" class="panel hidden">
+  <div class="card">
+    <div class="head"><div><h2>估價單</h2><p class="muted">搜尋型號加入商品，自動計算未稅、稅金與總計。</p></div><div class="no-print"><button class="secondary" onclick="newQuote()">新增估價單</button><button onclick="saveQuote()">儲存</button><button class="secondary" onclick="window.print()">列印／PDF</button></div></div>
+    <div class="formrow">
+      <label>估價日期<input id="quoteDate" type="date"></label>
+      <label>估價單號<input id="quoteNo" placeholder="自動產生"></label>
+      <label>客戶名稱<input id="quoteCustomer" placeholder="請輸入客戶名稱"></label>
+      <label>電話<input id="quotePhone" inputmode="tel"></label>
+    </div>
+    <label>地址<input id="quoteAddress" placeholder="施工或送貨地址"></label>
+    <hr>
+    <div class="formrow no-print">
+      <label>搜尋商品<input id="quoteSearch" list="quoteProductList" placeholder="輸入型號、品牌或品名"></label>
+      <label>價格類型<select id="quotePriceType"><option value="end">末端售價</option><option value="wholesale">批發價</option><option value="suggested">建議售價</option><option value="dealer">經銷價</option></select></label>
+      <div style="align-self:end"><button onclick="addQuoteItem()">加入商品</button></div>
+    </div>
+    <datalist id="quoteProductList"></datalist>
+    <div class="tablewrap"><table><thead><tr><th>型號／品名</th><th>數量</th><th>單價</th><th>金額</th><th class="no-print">操作</th></tr></thead><tbody id="quoteItemsBody"></tbody></table></div>
+    <div class="grid2" style="margin-top:14px">
+      <label>備註<textarea id="quoteNote" rows="5" placeholder="施工、運送、保固、付款條件等"></textarea></label>
+      <div class="card" style="box-shadow:none;border:1px solid #dce4ee">
+        <div class="row between"><b>未稅小計</b><b id="quoteSubtotal">$0</b></div>
+        <div class="row between"><label style="display:flex;align-items:center;gap:8px"><input id="quoteTaxEnabled" type="checkbox" checked onchange="renderQuote()">稅金 5%</label><b id="quoteTax">$0</b></div>
+        <hr><div class="row between"><h2>總計</h2><h2 id="quoteTotal">$0</h2></div>
+      </div>
+    </div>
+  </div>
+  <div class="card no-print"><h2>已儲存估價單</h2><div id="quoteHistory"></div></div>
+</section>
+
+
+<section id="database70" class="panel hidden">
+ <div class="card">
+  <h2 style="margin-top:0">🗄️ ERP 7.0 原始資料庫接軌</h2>
+  <p class="notice">7.0 第一個開發里程碑：保留目前可用的 POS 與四萬多筆商品，同時開始辨識舊系統 DBF 資料。</p>
+  <div class="stats">
+   <div class="stat"><span>已辨識 DBF</span><b>20</b></div>
+   <div class="stat"><span>客戶主檔</span><b>5,304</b></div>
+   <div class="stat"><span>庫存異動</span><b>322,080</b></div>
+   <div class="stat"><span>版本</span><b>7.0.0 Alpha 1</b></div>
+  </div>
+ </div>
+ <div class="card">
+  <h3>已辨識資料表</h3>
+  <div class="table-wrap">
+   <table>
+    <thead><tr><th>檔案</th><th>筆數</th><th>欄位數</th><th>主要欄位</th></tr></thead>
+    <tbody><tr><td><b>XG_CUS.DBF</b></td><td>5,304</td><td>39</td><td class="muted">FCUST、FCUSTC、FHEAD、FCUSTX、FPRCID、FBONUS、FDSC…</td></tr><tr><td><b>XG_EAC1.DBF</b></td><td>0</td><td>10</td><td class="muted">FSHOP、FTIME、FDATE、FECR、FTOT、FCHG、FGPF…</td></tr><tr><td><b>XG_EACC.DBF</b></td><td>0</td><td>11</td><td class="muted">FSHOP、FTIME、FDATE、FTOT、FCHG、FGPF、FMEN…</td></tr><tr><td><b>XG_KIL.DBF</b></td><td>1</td><td>1</td><td class="muted">FYES</td></tr><tr><td><b>XG_MPAY.DBF</b></td><td>0</td><td>20</td><td class="muted">FOK、FID、FSQ、FSQC、FDATE、FEDATE、FSHOP…</td></tr><tr><td><b>XG_MRCV.DBF</b></td><td>0</td><td>20</td><td class="muted">FOK、FID、FSQ、FSQC、FDATE、FEDATE、FSHOP…</td></tr><tr><td><b>xg_accdep.dbf</b></td><td>168</td><td>9</td><td class="muted">FDEP、FNAME、FISDEP、FCR_DB、FMINUS、FATTR、FREM…</td></tr><tr><td><b>xg_bom.dbf</b></td><td>0</td><td>9</td><td class="muted">FRNOX、FSEC、FRNO、FRNO1、FQTY、FQTYK、FLOSS…</td></tr><tr><td><b>xg_bomctl.dbf</b></td><td>0</td><td>40</td><td class="muted">FTRS、FDATE、FSQ、FRNO、FWHO、FSEC、FMEN…</td></tr><tr><td><b>xg_bomobj.dbf</b></td><td>0</td><td>12</td><td class="muted">FRNO、FDATE1、FDATE2、FQTY、FUCOST、FURATE、FPCOST…</td></tr><tr><td><b>xg_bomodr.dbf</b></td><td>0</td><td>9</td><td class="muted">FOK、FSQ、FSQ1、FCUST、FMEN、FDATE、FRNO…</td></tr><tr><td><b>xg_bompak.dbf</b></td><td>0</td><td>19</td><td class="muted">FRPT_NO、FRPT_NO1、FRPT_NO2、FRPT_NO3、FRPT_NO4、FRPT_NO5、FRPT_NO6…</td></tr><tr><td><b>xg_bomsec.dbf</b></td><td>2</td><td>4</td><td class="muted">FSEC、FNAME、FHOUR、FCOST</td></tr><tr><td><b>xg_bomtim.dbf</b></td><td>0</td><td>19</td><td class="muted">FDATE、FMEN、FSEC1、FHOUR1、FSEC2、FHOUR2、FSEC3…</td></tr><tr><td><b>xg_buse.dbf</b></td><td>0</td><td>13</td><td class="muted">FTRS、FSQ、FODR、FDATE、FST_ID、FRNO、FSEC…</td></tr><tr><td><b>xg_inot.dbf</b></td><td>322,080</td><td>8</td><td class="muted">FID、FWKID、FRPT_NO、FDATE、FIN、FUSE、FCR_Q…</td></tr><tr><td><b>xg_iuse.dbf</b></td><td>0</td><td>15</td><td class="muted">FCHK、FID、FSQ、FDATE、FST_ID、FRPT_NO、FQTY…</td></tr><tr><td><b>xg_jp9.dbf</b></td><td>4</td><td>12</td><td class="muted">FPT_NO、FP1、FP2、FP3、FP4、FP5、FP6…</td></tr><tr><td><b>xg_men.dbf</b></td><td>6</td><td>26</td><td class="muted">FRUN、FSHOP、FWK_NO、FRIGHT、FPASS、FGRP、FNAME…</td></tr><tr><td><b>xg_prccg.dbf</b></td><td>0</td><td>5</td><td class="muted">FRPT_NO、FDATE、FCOST、FPRIC、FREM</td></tr></tbody>
+   </table>
+  </div>
+ </div>
+ <div class="card">
+  <h3>7.0 開發進度</h3>
+  <p>✅ 沿用現有商品資料與 POS 收銀功能</p>
+  <p>✅ 保留 8 碼商品編號、國際條碼、型號、自編碼搜尋</p>
+  <p>✅ 建立 DBF 欄位與筆數清單</p>
+  <p>🟡 XG_CUS.DBF 客戶主檔：已找到，下一版接入客戶頁</p>
+  <p>🟡 XG_INOT.DBF 庫存異動：已找到，下一版建立庫存歷程</p>
+  <p>⬜ 商品主檔 DBF：尚未確認，暫時沿用 store1～store5 商品資料</p>
+ </div>
+</section>
+
+
+<section id="purchase84" class="panel hidden">
+<div class="purchase84-layout">
+ <div>
+  <div class="card">
+   <div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><div><h2 style="margin:0">🛒 智慧採購單</h2><div class="notice">可建立採購單、分批到貨，確認到貨後自動增加商品庫存。</div></div><button class="secondary" onclick="purchase84New()">新增採購單</button></div>
+   <div class="formrow"><div><label>採購單號</label><input id="purchase84No" readonly></div><div><label>採購日期</label><input id="purchase84Date" type="date"></div></div>
+   <div class="formrow"><div><label>廠商</label><select id="purchase84Supplier"></select></div><div><label>預計到貨日</label><input id="purchase84Eta" type="date"></div></div>
+   <label>搜尋商品</label>
+   <input id="purchase84Search" placeholder="輸入型號、8碼、條碼或品名" autocomplete="off" oninput="purchase84SearchProducts()" onkeydown="if(event.key==='Enter'){event.preventDefault();purchase84AddFirstResult()}">
+   <div id="purchase84Results" class="purchase84-results hidden"></div>
+   <div id="purchase84Selected" class="notice" style="margin-top:8px">尚未選擇商品</div>
+   <div class="formrow"><div><label>採購數量</label><input id="purchase84Qty" type="number" min="1" value="1"></div><div><label>採購單價</label><input id="purchase84Unit" type="number" min="0" value="0"></div></div>
+   <button class="primary" style="width:100%;margin-top:10px" onclick="purchase84AddItem()">＋ 加入採購明細</button>
+   <label>備註</label><input id="purchase84Note" placeholder="例如：福利案、贈品、急件、付款條件">
+  </div>
+ </div>
+ <div>
+  <div class="card">
+   <h2 style="margin-top:0">本張採購明細</h2>
+   <div class="scroll"><table><thead><tr><th>商品</th><th>數量</th><th>已到</th><th>單價</th><th>小計</th><th></th></tr></thead><tbody id="purchase84Cart"></tbody></table></div>
+   <div style="display:flex;justify-content:flex-end;margin-top:12px;font-size:24px;font-weight:900">總計：<span id="purchase84Total" style="margin-left:8px">$0</span></div>
+   <div class="actions"><button class="secondary" onclick="purchase84Save('草稿')">儲存草稿</button><button class="primary" onclick="purchase84Save('已下單')">確認下單</button><button class="secondary" onclick="purchase84PrintCurrent()">列印採購單</button></div>
+  </div>
+ </div>
+</div>
+<div class="card">
+ <div style="display:flex;justify-content:space-between;gap:10px;align-items:center"><h2 style="margin:0">採購紀錄與到貨</h2><button class="secondary" onclick="purchase84RenderOrders()">重新整理</button></div>
+ <div class="grid4"><div><label>搜尋</label><input id="purchase84Filter" placeholder="單號、廠商、商品" oninput="purchase84RenderOrders()"></div><div><label>狀態</label><select id="purchase84StatusFilter" onchange="purchase84RenderOrders()"><option value="">全部</option><option>草稿</option><option>已下單</option><option>部分到貨</option><option>已完成</option><option>已取消</option></select></div><div><label>開始日期</label><input id="purchase84From" type="date" onchange="purchase84RenderOrders()"></div><div><label>結束日期</label><input id="purchase84To" type="date" onchange="purchase84RenderOrders()"></div></div>
+ <div class="purchase84-summary"><div><small>採購單數</small><b id="purchase84Count">0</b></div><div><small>採購總額</small><b id="purchase84Amount">$0</b></div><div><small>待到貨</small><b id="purchase84Pending">0</b></div><div><small>已完成</small><b id="purchase84Done">0</b></div></div>
+ <div id="purchase84OrderList" class="list"></div>
+</div>
+</section>
+
+<section id="backup" class="panel hidden">
+<div class="card"><h2>📱 安裝到手機主畫面</h2>
+<p class="notice">Android 使用 Chrome 開啟本系統後，可按「安裝雙發 ERP」。iPhone／iPad 請使用 Safari，按分享按鈕，再選「加入主畫面」。</p>
+<div class="actions"><button id="installAppBtn" class="primary" onclick="installERPApp()" disabled>安裝雙發 ERP</button><button class="secondary" onclick="showIOSHelp()">iPhone 安裝說明</button></div>
+<p id="installStatus" class="notice">必須先將這個資料夾上傳到 Firebase Hosting，才能正常安裝及離線使用。</p>
+</div>
+<div class="card"><h2>價格與顯示設定</h2>
+<label>經銷價顯示取整</label><select id="roundMode" onchange="saveSettings()"><option value="nearest50">四捨五入至 50 元</option><option value="ceil50">一律進位至 50 元</option><option value="none">不取整</option></select>
+<label>低庫存警示數量</label><input id="lowLimit" type="number" min="0" value="2" onchange="saveSettings()">
+<p class="notice">莊頭北成本＝經銷價×91%後四捨五入；經銷價＝牌價表經銷價依品牌公式計算並取整；建議售價＝牌價表建議售價×90%後進位至百元。直行價商品：成本＝牌價表經銷價、經銷價＝牌價表建議批價。專售機型沒有建議批價時，依一般公式計算。</p>
+</div>
+<div class="card"><h2>自動備份</h2>
+<label style="display:flex;align-items:center;gap:10px;color:var(--text)">
+<input id="autoDownloadBackup" type="checkbox" style="width:auto" onchange="saveSettings()"> 每次進貨、銷貨、客戶或商品修改後，自動下載備份檔
+</label>
+<p class="notice">系統會自動保留最近 20 份「瀏覽器內部快照」。勾選後，每次重要修改還會下載一份 JSON 到「下載項目」。iPhone 或部分瀏覽器可能會先詢問是否允許下載。</p>
+<div class="actions">
+<button class="primary" onclick="exportData()">立即匯出完整備份</button>
+<label class="btn secondary" style="display:inline-block">匯入備份檔<input type="file" accept=".json" onchange="importData(event)" style="display:none"></label>
+<button class="secondary" onclick="restoreLatestSnapshot()">還原最新快照</button>
+<button class="danger" onclick="resetTransactions()">清除進銷存紀錄</button>
+</div>
+<div id="snapshotList" style="margin-top:12px"></div>
+</div>
+<div class="card"><h2>資料來源</h2><p class="notice">內建櫻花、林內、莊頭北、喜特麗JTL 2026 最新牌價商品。資料會儲存在目前瀏覽器，並自動保留最近 20 份內部快照；仍建議保留下載的 JSON 備份檔。</p></div>
+</section>
+</main>
+
+
+<dialog id="stockInPrintDialog">
+  <div class="dialogbody">
+    <h2 style="margin-top:0">✅ 進貨已確認</h2>
+    <div id="stockInPrintSummary" class="notice"></div>
+    <p class="notice">商品條碼會依本次進貨數量列印：進貨幾個，就印幾張。</p>
+    <div class="actions">
+      <button class="primary" onclick="printLastStockInReceipt()">列印進貨單</button>
+      <button class="success" onclick="printLastStockInBarcodes()">列印商品條碼</button>
+      <button class="secondary" onclick="printLastStockInBoth()">兩個都列印</button>
+      <button class="secondary" onclick="stockInPrintDialog.close()">不列印</button>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="barcodeScannerDialog">
+  <div class="dialogbody">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px">
+      <div>
+        <h2 style="margin:0">📷 手機掃條碼</h2>
+        <div class="muted">把商品條碼放在相機框內</div>
+      </div>
+      <button class="secondary" onclick="stopBarcodeScanner()">關閉</button>
+    </div>
+    <div id="qr-reader"></div>
+    <div id="scanStatus" class="scan-note">第一次使用時，請按「允許」開啟相機權限。GitHub Pages 必須使用 HTTPS 網址才能啟用相機。</div>
+  </div>
+</dialog>
+
+<dialog id="productDialog"><div class="dialogbody" id="productDetail"></div></dialog>
+<div id="toast" class="toast"></div>
+
+<script src="js/app-02.js"></script>
+<div style="text-align:center;color:#98a2b3;font-size:12px;padding:0 0 18px">雙發水電五金 ERP 10.0.5 Professional｜固定整頁鍵盤操作版</div>
+
+<script id="erp90-script" src="js/app-03.js"></script>
+<script id="erp10-operational-fix" src="js/app-04.js"></script>
+
+<script src="js/app-05.js"></script>
+
+
+<script id="erp1002-masterdata-fix" src="js/app-06.js"></script>
+
+<script id="erp1003-real-dbf-masterdata" src="js/app-07.js"></script>
+<script src="js/app-08-keyboard.js"></script>
+
+<script id="erp1005-fixed-layout-script">
+function erpToggleFullscreen(){
+  try{
+    if(!document.fullscreenElement){
+      document.documentElement.requestFullscreen?.();
+    }else{
+      document.exitFullscreen?.();
+    }
+  }catch(e){
+    const t=document.getElementById('toast');
+    if(t){t.textContent='瀏覽器不支援全螢幕模式';t.style.display='block';setTimeout(()=>t.style.display='none',1800)}
+  }
+}
+</script>
+
+<style id="erpEmbeddedStyle">
+html.erp-embedded, html.erp-embedded body { height:100%; overflow:hidden !important; }
+html.erp-embedded header, html.erp-embedded nav, html.erp-embedded .erp-keyboard-help { display:none !important; }
+html.erp-embedded main, html.erp-embedded .container, html.erp-embedded .workspace, html.erp-embedded #app { margin:0 !important; padding:0 !important; max-width:none !important; width:100% !important; height:100% !important; }
+html.erp-embedded .panel { height:100vh !important; max-height:100vh !important; overflow:auto !important; border-radius:0 !important; box-shadow:none !important; margin:0 !important; }
+</style>
+<script>
+(function(){
+  const params = new URLSearchParams(location.search);
+  const panel = params.get('panel');
+  const embedded = params.get('embedded') === '1';
+  if (embedded) document.documentElement.classList.add('erp-embedded');
+  function openRequestedPanel(){
+    if (!panel) return;
+    try {
+      if (typeof window.showPanel === 'function') {
+        window.showPanel(panel);
+      } else {
+        document.querySelectorAll('.panel').forEach(el=>el.classList.remove('active'));
+        const target=document.getElementById(panel);
+        if(target) target.classList.add('active');
+      }
+      const target=document.getElementById(panel);
+      if(target){ target.style.display='block'; target.scrollTop=0; }
+    } catch(e){ console.error('Unable to open panel',panel,e); }
+  }
+  window.addEventListener('DOMContentLoaded',()=>setTimeout(openRequestedPanel,50));
+  window.addEventListener('load',()=>setTimeout(openRequestedPanel,250));
+})();
+</script>
+</body></html>
