@@ -81,6 +81,13 @@ dialog{border:0;border-radius:16px;padding:0;max-width:680px;width:calc(100% - 2
 .pos-suggestion b{display:block}
 .pos-code-help{font-size:12px;color:#c5d2dc;margin-top:6px}
 
+
+/* ERP 10.0.4 鍵盤操作焦點 */
+.keyboard-help{max-width:1500px;margin:8px auto 10px;padding:9px 14px;background:#fff7d6;border:1px solid #e7c64a;border-radius:10px;color:#5b4a00;font-size:14px}
+.keyboard-enabled :focus{outline:3px solid #ff9f0a!important;outline-offset:2px!important;box-shadow:0 0 0 5px rgba(255,159,10,.20)!important}
+.keyboard-enabled tbody tr[tabindex="0"]{cursor:pointer}
+.keyboard-enabled tbody tr[tabindex="0"]:focus{background:#fff1c2!important}
+@media(max-width:700px){.keyboard-help{margin:6px 8px;font-size:12px}}
 </style>
 
 <style>
@@ -844,7 +851,7 @@ dialog{border:0;border-radius:16px;padding:0;max-width:680px;width:calc(100% - 2
 <div id="toast" class="toast"></div>
 
 <script src="js/app-02.js"></script>
-<div style="text-align:center;color:#98a2b3;font-size:12px;padding:0 0 18px">雙發水電五金 ERP 10.0.2 Professional｜廠商編號與主檔資料修正版</div>
+<div style="text-align:center;color:#98a2b3;font-size:12px;padding:0 0 18px">雙發水電五金 ERP 10.0.4 Professional｜鍵盤操作版</div>
 
 <script id="erp90-script" src="js/app-03.js"></script>
 <script id="erp10-operational-fix" src="js/app-04.js"></script>
@@ -855,4 +862,5 @@ dialog{border:0;border-radius:16px;padding:0;max-width:680px;width:calc(100% - 2
 <script id="erp1002-masterdata-fix" src="js/app-06.js"></script>
 
 <script id="erp1003-real-dbf-masterdata" src="js/app-07.js"></script>
+<script src="js/app-08-keyboard.js"></script>
 </body></html>
