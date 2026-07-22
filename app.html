@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#0b4d8c">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="雙發ERP 11.0 DOS">
+<meta name="apple-mobile-web-app-title" content="雙發ERP 11.1 水電材料行版">
 <title>雙發水電五金｜ERP 8.6.2 Professional｜稅別與雙儀表板</title>
 <style>
 :root{--blue:#0b4d8c;--blue2:#1976d2;--bg:#f2f5f9;--card:#fff;--text:#162033;--muted:#667085;--line:#dfe5ec;--red:#c62828;--green:#1b7f45;--gold:#a66b00}
@@ -208,6 +208,25 @@ html.erp-embedded tr:focus,html.erp-embedded tr:hover,html.erp-embedded .selecte
 html.erp-embedded .grid,html.erp-embedded .lookup90-grid,html.erp-embedded .erp-grid{gap:8px!important}
 html.erp-embedded .muted{color:#444!important}
 html.erp-embedded ::-webkit-scrollbar{width:16px;height:16px}html.erp-embedded ::-webkit-scrollbar-thumb{background:#888;border:2px solid #d8d8d8}html.erp-embedded ::-webkit-scrollbar-track{background:#ddd}
+</style>
+
+<style id="erp111FixedScreen">
+html.erp-embedded,html.erp-embedded body{height:100%!important;overflow:hidden!important;background:#cfd4d8!important}
+html.erp-embedded .panel{height:100%!important;max-height:100%!important;overflow:hidden!important;padding:7px!important;display:flex!important;flex-direction:column!important;gap:6px!important}
+html.erp-embedded .panel>.card{flex:0 0 auto!important;margin:0!important;padding:7px!important}
+html.erp-embedded .panel>.card:last-child{min-height:0!important;flex:1 1 auto!important;overflow:hidden!important}
+html.erp-embedded .scroll,html.erp-embedded .erp90-table-wrap,html.erp-embedded .static-scroll,html.erp-embedded .purchase84-results,html.erp-embedded .pos-cart,html.erp-embedded [style*="overflow:auto"]{min-height:0!important;overflow:auto!important;scroll-behavior:auto!important}
+html.erp-embedded .erp90-layout{height:100%!important;min-height:0!important;display:grid!important;grid-template-columns:minmax(500px,1.45fr) minmax(360px,1fr)!important;gap:7px!important;overflow:hidden!important}
+html.erp-embedded .erp90-list,html.erp-embedded .erp90-editor{min-height:0!important;height:100%!important;overflow:hidden!important;display:flex!important;flex-direction:column!important}
+html.erp-embedded .erp90-table-wrap{flex:1 1 auto!important;max-height:none!important}
+html.erp-embedded table{font-size:13px!important;line-height:1.2!important}
+html.erp-embedded th,html.erp-embedded td{padding:4px 5px!important;height:27px!important}
+html.erp-embedded input,html.erp-embedded select,html.erp-embedded textarea,html.erp-embedded button{min-height:29px!important;padding:3px 6px!important}
+html.erp-embedded h1,html.erp-embedded h2,html.erp-embedded h3{font-size:18px!important;margin:0 0 5px!important;padding-bottom:3px!important}
+html.erp-embedded .grid{gap:5px!important}
+html.erp-embedded .keyboard-help{display:none!important}
+html.erp-embedded tr[tabindex="0"]:focus{outline:3px solid #ff9f00!important;outline-offset:-3px!important;background:#fff1a6!important}
+@media(max-width:1200px){html.erp-embedded .erp90-layout{grid-template-columns:1fr!important}.erp90-editor{display:none!important}}
 </style>
 </head>
 <body>
@@ -967,6 +986,29 @@ html.erp-embedded .panel { height:100vh !important; max-height:100vh !important;
   }
   window.addEventListener('DOMContentLoaded',()=>setTimeout(openRequestedPanel,50));
   window.addEventListener('load',()=>setTimeout(openRequestedPanel,250));
+})();
+</script>
+
+<script id="erp111KeyboardEnhance">
+(function(){
+  'use strict';
+  function visible(e){if(!e)return false;const r=e.getBoundingClientRect(),s=getComputedStyle(e);return r.width>0&&r.height>0&&s.display!=='none'&&s.visibility!=='hidden'}
+  function activePanel(){return [...document.querySelectorAll('.panel')].find(visible)||document.body}
+  function rows(){return [...activePanel().querySelectorAll('tbody tr')].filter(visible)}
+  function focusFirst(){const p=activePanel();const el=[...p.querySelectorAll('input:not([type=hidden]),select,button,tbody tr')].find(visible);if(el){if(el.matches('tbody tr'))el.tabIndex=0;el.focus({preventScroll:true});el.scrollIntoView({block:'nearest'});}}
+  window.addEventListener('message',e=>{if(e.data&&e.data.type==='ERP_FOCUS_FIRST')focusFirst()});
+  document.addEventListener('keydown',e=>{
+    const a=document.activeElement;
+    if(e.key==='PageDown'||e.key==='PageUp'){
+      const rs=rows(); if(!rs.length)return; e.preventDefault(); let i=rs.indexOf(a?.closest?.('tr')); if(i<0)i=0; i=Math.max(0,Math.min(rs.length-1,i+(e.key==='PageDown'?10:-10))); rs[i].tabIndex=0;rs[i].focus({preventScroll:true});rs[i].scrollIntoView({block:'nearest'});return;
+    }
+    if(e.key==='Home'&&a?.closest?.('tbody')){const rs=rows();if(rs.length){e.preventDefault();rs[0].tabIndex=0;rs[0].focus();rs[0].scrollIntoView({block:'nearest'})}}
+    if(e.key==='End'&&a?.closest?.('tbody')){const rs=rows();if(rs.length){e.preventDefault();const x=rs[rs.length-1];x.tabIndex=0;x.focus();x.scrollIntoView({block:'nearest'})}}
+    if(e.key==='F1'){e.preventDefault();parent.focus();return}
+    if(e.key==='F6'){e.preventDefault();const rs=rows();if(!rs.length)return;let i=rs.indexOf(a?.closest?.('tr'));i=Math.max(0,i-1);rs[i].tabIndex=0;rs[i].focus();rs[i].scrollIntoView({block:'nearest'});return}
+    if(e.key==='F7'){e.preventDefault();const rs=rows();if(!rs.length)return;let i=rs.indexOf(a?.closest?.('tr'));i=Math.min(rs.length-1,Math.max(-1,i)+1);rs[i].tabIndex=0;rs[i].focus();rs[i].scrollIntoView({block:'nearest'});return}
+  },true);
+  addEventListener('DOMContentLoaded',()=>setTimeout(focusFirst,120));
 })();
 </script>
 </body></html>
